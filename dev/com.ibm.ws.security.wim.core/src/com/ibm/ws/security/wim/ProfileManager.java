@@ -641,7 +641,7 @@ public class ProfileManager implements ProfileServiceLite {
         }
 
         Audit.audit(Audit.EventID.SECURITY_MEMBER_MGMT_01, auditManager.getRESTRequest(), AuditConstants.GET_AUDIT, targetReposId, uniqueName,
-                    realmName = (realmName != null) ? realmName : auditManager.getRealm(), retRoot, Integer.valueOf("200"));
+                    realmName != null ? realmName : getRealmNameOrFirstBest(retRoot), retRoot, Integer.valueOf("200"));
 
         return retRoot;
     }
@@ -1232,7 +1232,7 @@ public class ProfileManager implements ProfileServiceLite {
         }
 
         Audit.audit(Audit.EventID.SECURITY_MEMBER_MGMT_01, auditManager.getRESTRequest(), AuditConstants.SEARCH_AUDIT, targetReposId, uniqueName,
-                    realmName = (realmName != null) ? realmName : auditManager.getRealm(), retRootDO,
+                    realmName != null ? realmName : getRealmNameOrFirstBest(retRootDO), retRootDO,
                     Integer.valueOf("200"));
 
         return retRootDO;
@@ -2449,6 +2449,19 @@ public class ProfileManager implements ProfileServiceLite {
         return value;
     }
 
+    private String getRealmNameOrFirstBest(Root root) {
+        String value = null;
+        value = getRealmName(root);
+        if (value == null) {
+            try {
+                value = getRealmName();
+            } catch (Exception e) {
+                // leave realm at null
+            }
+        }
+        return value;
+    }
+
     private void groupMembershipLookup(Root root, String repositoryId, GroupControl ctrl,
                                        boolean isAllowOperationIfReposDown, Set<String> failureRepositoryIds, CacheControl clearCacheCtrl) throws WIMException {
         String METHODNAME = "groupMembershipLookup";
@@ -2772,8 +2785,8 @@ public class ProfileManager implements ProfileServiceLite {
             retRoot = postDelete(retRoot, repositoryId, returnDeleted);
         }
 
-        Audit.audit(Audit.EventID.SECURITY_MEMBER_MGMT_01, auditManager.getRESTRequest(), AuditConstants.DELETE_AUDIT, repositoryId, uniqueName, realmName, retRoot,
-                    Integer.valueOf("200"));
+        Audit.audit(Audit.EventID.SECURITY_MEMBER_MGMT_01, auditManager.getRESTRequest(), AuditConstants.DELETE_AUDIT, repositoryId, uniqueName,
+                    realmName != null ? realmName : getRealmNameOrFirstBest(retRoot), retRoot, Integer.valueOf("200"));
 
         return retRoot;
     }
@@ -3123,8 +3136,8 @@ public class ProfileManager implements ProfileServiceLite {
 
         unsetExternalId(created);
 
-        Audit.audit(Audit.EventID.SECURITY_MEMBER_MGMT_01, auditManager.getRESTRequest(), AuditConstants.CREATE_AUDIT, targetReposId, uniqueName, realmName, created,
-                    Integer.valueOf("200"));
+        Audit.audit(Audit.EventID.SECURITY_MEMBER_MGMT_01, auditManager.getRESTRequest(), AuditConstants.CREATE_AUDIT, targetReposId, uniqueName,
+                    realmName != null ? realmName : getRealmNameOrFirstBest(created), created, Integer.valueOf("200"));
 
         return created;
     }
@@ -3643,8 +3656,8 @@ public class ProfileManager implements ProfileServiceLite {
             retRoot = repositoryManager.getRepository(repositoryId).update(root);
         }
 
-        Audit.audit(Audit.EventID.SECURITY_MEMBER_MGMT_01, auditManager.getRESTRequest(), AuditConstants.UPDATE_AUDIT, repositoryId, uniqueName, realmName, retRoot,
-                    Integer.valueOf("200"));
+        Audit.audit(Audit.EventID.SECURITY_MEMBER_MGMT_01, auditManager.getRESTRequest(), AuditConstants.UPDATE_AUDIT, repositoryId, uniqueName,
+                    realmName != null ? realmName : getRealmNameOrFirstBest(retRoot), retRoot, Integer.valueOf("200"));
 
         return retRoot;
     }
