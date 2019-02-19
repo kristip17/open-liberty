@@ -19,6 +19,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.util.List;
 
 import org.junit.AfterClass;
@@ -61,6 +62,10 @@ public class FATTestAD {
      */
     @BeforeClass
     public static void setUp() throws Exception {
+
+        File f = new File(server.getServerRoot() + "/core.4630");
+        f.createNewFile();
+        Log.info(c, "setUp", "file " + f.getAbsoluteFile());
 
         // Add LDAP variables to bootstrap properties file
         LDAPUtils.addLDAPVariables(server);
