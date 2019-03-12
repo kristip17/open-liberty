@@ -19,6 +19,12 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.List;
 
 import org.junit.AfterClass;
@@ -334,8 +340,21 @@ public class URAPIs_ADLDAPTest {
      * This verifies the various required bundles got installed and are working.
      */
     @Test
-    public void getUsersForMaxSearchResultException() {
+    public void getUsersForMaxSearchResultException() throws Exception {
         // This test will only be executed when using physical LDAP server
+
+        Socket socket = new Socket();
+        try {
+            Log.info(c, "getUsersForMaxSearchResultException", "Connecting");
+
+            socket.connect(new InetSocketAddress("localhost", server.getHttpDefaultPort()), 2000);
+            Log.info(c, "getUsersForMaxSearchResultException", "Connected");
+        } catch (Exception e) {
+            Log.error(c, "getUsersForMaxSearchResultException Connect failed", e);
+        } finally {
+            socket.close();
+        }
+
         Assume.assumeTrue(!LDAPUtils.USE_LOCAL_LDAP_SERVER);
         String user = "*";
         Log.info(c, "getUsersForMaxSearchResultException", "Checking with a valid pattern and limit of 850.");
@@ -345,6 +364,109 @@ public class URAPIs_ADLDAPTest {
         } catch (RegistryException e) {
             String msg = e.getMessage();
             assertTrue("Message did not contain expected message 'CWIML1018E': " + msg, msg.contains("CWIML1018E"));
+        } catch (Exception e) {
+            // I am looking for a SocketTimeoutException
+            Log.info(c, "Caught Exception ", e.toString());
+            if (e.toString().contains("SocketTimeoutException")) {
+                Log.info(c, "getUsersForMaxSearchResultException", "SocketTimeoutException");
+                socket = new Socket();
+                try {
+                    Log.info(c, "getUsersForMaxSearchResultException", "Connecting");
+
+                    socket.connect(new InetSocketAddress("localhost", server.getHttpDefaultPort()), 2000);
+                    Log.info(c, "getUsersForMaxSearchResultException", "Connected");
+                } catch (Exception e2) {
+                    Log.error(c, "getUsersForMaxSearchResultException Connect failed", e2);
+                } finally {
+                    socket.close();
+                }
+
+                List<String> list = server.findStringsInLogs("process = ");
+                if (list.isEmpty()) {
+                    Log.info(c, "getUsersForMaxSearchResultException", "Did not find process in log");
+                } else {
+                    String first = list.get(0);
+                    Log.info(c, "getUsersForMaxSearchResultException", "line " + first);
+                    final String pid = first.split("@")[0].split(" = ")[1];
+                    Log.info(c, "getUsersForMaxSearchResultException", "pid  " + pid);
+
+                    AccessController.doPrivileged(new PrivilegedAction() {
+                        @Override
+                        public Object run() {
+                            try {
+                                //Runtime.getRuntime().exec("kill -3 " + pid);
+
+                                Runtime runtime = Runtime.getRuntime();
+                                String[] commands = { "kill", "-3", pid };
+                                Log.info(c, "getUsersForMaxSearchResultException", "Run it");
+                                Process process = runtime.exec(commands);
+                                Log.info(c, "getUsersForMaxSearchResultException", "Ran it " + process.waitFor());
+
+                                BufferedReader lineReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                                String line = lineReader.readLine();
+                                while (line != null) {
+                                    Log.info(c, "getUsersForMaxSearchResultException", "line " + line);
+                                    line = lineReader.readLine();
+                                }
+
+                                BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                                line = errorReader.readLine();
+                                while (line != null) {
+                                    Log.info(c, "getUsersForMaxSearchResultException", "errorReader " + line);
+                                    line = errorReader.readLine();
+                                }
+                            } catch (Exception e) {
+                                Log.error(c, "getUsersForMaxSearchResultExceptions Exception on  kill -3", e);
+                            }
+                            return null;
+                        }
+                    });
+
+                    AccessController.doPrivileged(new PrivilegedAction() {
+                        @Override
+                        public Object run() {
+                            try {
+                                //Runtime.getRuntime().exec("kill -3 " + pid);
+
+                                Runtime runtime = Runtime.getRuntime();
+                                String[] commands = { "kill", "-3", "1245" };
+                                Log.info(c, "getUsersForMaxSearchResultException", "Run it, bad pid");
+                                Process process = runtime.exec(commands);
+                                Log.info(c, "getUsersForMaxSearchResultException", "Ran it " + process.waitFor());
+
+                                BufferedReader lineReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                                String line = lineReader.readLine();
+                                while (line != null) {
+                                    Log.info(c, "getUsersForMaxSearchResultException", "line " + line);
+                                    line = lineReader.readLine();
+                                }
+
+                                BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                                line = errorReader.readLine();
+                                while (line != null) {
+                                    Log.info(c, "getUsersForMaxSearchResultException", "errorReader " + line);
+                                    line = errorReader.readLine();
+                                }
+                            } catch (Exception e) {
+                                Log.error(c, "getUsersForMaxSearchResultExceptions Exception on  kill -3", e);
+                            }
+                            return null;
+                        }
+                    });
+
+                    Log.info(c, "getUsersForMaxSearchResultException", "Ran kill -3");
+                }
+            }
+        }
+
+        List<String> list = server.findStringsInLogs("process = ");
+        if (list.isEmpty()) {
+            Log.info(c, "getUsersForMaxSearchResultException", "Did not find process in log");
+        } else {
+            String first = list.get(0);
+            Log.info(c, "getUsersForMaxSearchResultException", "line " + first);
+            String pid = first.split("@")[0].split(" = ")[1];
+            Log.info(c, "getUsersForMaxSearchResultException", "pid  " + pid);
         }
     }
 
