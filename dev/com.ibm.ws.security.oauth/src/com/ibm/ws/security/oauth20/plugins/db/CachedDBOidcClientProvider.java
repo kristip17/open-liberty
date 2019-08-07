@@ -888,6 +888,7 @@ public class CachedDBOidcClientProvider extends OAuthJDBCImpl implements OidcOAu
         if (clientMetadataJson != null && clientMetadataJson.has(OAuth20Constants.CLIENT_SECRET)) {
             String clientSecret = clientMetadataJson.get(OAuth20Constants.CLIENT_SECRET).getAsString();
             if (clientSecret != null && !clientSecret.isEmpty()) {
+                System.out.println("KPP for temp debug " + clientSecret);
                 clientMetadataJson.addProperty(OAuth20Constants.CLIENT_SECRET, PasswordUtil.passwordEncode(clientSecret));
             }
         }
