@@ -1,21 +1,21 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.36,ou=attributeTypes,cn=apache,ou=schema
-m-supattributetype: modifiersName
+entryCSN: 20191031184641.846000Z#000000#000#000000
+m-usage: DIRECTORY_OPERATION
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.12
+m-singlevalue: FALSE
+entryUUID: 56fddbb0-f9e6-47ab-8170-247d9f81f92c
+m-supattributetype: modifiersName
+m-equality: distinguishedNameMatch
+m-description: the DN of the modifier of the schema
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.36
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: distinguishedNameMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.12
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: DIRECTORY_OPERATION
-m-oid: 1.3.6.1.4.1.18060.0.4.1.2.36
+createTimestamp: 20191031184645.861Z
 m-name: schemaModifiersName
-m-description: the DN of the modifier of the schema
-m-obsolete: FALSE
-entryUUID: 1c1527ed-98f3-4576-9787-391959ee107a
-entryCSN: 20130919065344.778000Z#000001#000#000000
-entryParentId: 82e8e6b4-db49-43a8-bdcd-8eaf3e877f30
-createTimestamp: 20130919065353.619Z
+entryParentId: d317180f-dc69-4f5d-83f1-bf4e8586f37c

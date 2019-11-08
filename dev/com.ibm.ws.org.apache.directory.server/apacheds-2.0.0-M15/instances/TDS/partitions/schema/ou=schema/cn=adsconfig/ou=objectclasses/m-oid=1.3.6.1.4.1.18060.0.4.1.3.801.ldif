@@ -1,17 +1,17 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.3.801,ou=objectClasses,cn=adsconfig,ou=schema
-objectclass: top
-objectclass: metaTop
-objectclass: metaObjectClass
+entryCSN: 20191031184641.783000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
-m-oid: 1.3.6.1.4.1.18060.0.4.1.3.801
-m-name: ads-saslMechHandler
-m-description: SASL mechanism handler
+entryUUID: b431ad51-12ce-45f6-a143-e1c657dbae8f
+m-may: ads-ntlmMechProvider
 m-supobjectclass: ads-base
 m-must: ads-saslMechName
 m-must: ads-saslMechClassName
-entryUUID: bec8400d-64c3-45f4-8474-64ae56e14409
-m-may: ads-ntlmMechProvider
-entryCSN: 20130919065344.741000Z#000001#000#000000
-entryParentId: 87769cc1-b86e-404a-8d67-bcb407eabaf2
-createTimestamp: 20130919065352.409Z
+m-description: SASL mechanism handler
+m-oid: 1.3.6.1.4.1.18060.0.4.1.3.801
+objectclass: top
+objectclass: metaTop
+objectclass: metaObjectClass
+createTimestamp: 20191031184650.779Z
+m-name: ads-saslMechHandler
+entryParentId: 87320f3f-9f18-47e0-a467-9094c339cc8f

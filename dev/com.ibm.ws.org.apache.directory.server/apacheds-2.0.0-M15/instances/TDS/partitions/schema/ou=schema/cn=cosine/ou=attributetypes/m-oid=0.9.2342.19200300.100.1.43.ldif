@@ -1,22 +1,22 @@
 version: 1
 dn: m-oid=0.9.2342.19200300.100.1.43,ou=attributeTypes,cn=cosine,ou=schema
+entryCSN: 20191031184642.359000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singlevalue: FALSE
+entryUUID: e3b65bfa-9436-42b5-a0f4-a3b06f4bb033
+m-substr: caseIgnoreSubstringsMatch
+m-equality: caseIgnoreMatch
+m-description: RFC1274: friendly country name
+m-obsolete: FALSE
+m-oid: 0.9.2342.19200300.100.1.43
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreMatch
-m-substr: caseIgnoreSubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 0.9.2342.19200300.100.1.43
+createTimestamp: 20191031184651.291Z
 m-name: co
 m-name: friendlyCountryName
-m-description: RFC1274: friendly country name
-m-obsolete: FALSE
-entryUUID: 48609324-34a5-48bb-a223-ef1b5196f4be
-entryCSN: 20130919065345.113000Z#000002#000#000000
-entryParentId: ff19462c-ed76-427c-b184-c1080239b9f5
-createTimestamp: 20130919065354.083Z
+entryParentId: d0b29479-bd50-4ee0-98b7-f38f8fe0e161

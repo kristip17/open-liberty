@@ -1,19 +1,19 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.42.2.27.8.1.19,ou=attributeTypes,cn=pwdpolicy,ou=schema
+entryCSN: 20191031184642.753000Z#000000#000#000000
+m-usage: DIRECTORY_OPERATION
 creatorsname: uid=admin,ou=system
+m-nousermodification: TRUE
+m-length: 0
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.24
+m-ordering: generalizedTimeOrderingMatch
+entryUUID: 740ef18e-dc52-414d-9327-6fab308c531e
+m-equality: generalizedTimeMatch
+m-description: The timestamps of the last consecutive authentication failures
+m-oid: 1.3.6.1.4.1.42.2.27.8.1.19
 objectclass: metaTop
 objectclass: metaAttributeType
 objectclass: top
-m-equality: generalizedTimeMatch
-m-ordering: generalizedTimeOrderingMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.24
-m-length: 0
-m-nousermodification: TRUE
-m-usage: directoryOperation
-m-oid: 1.3.6.1.4.1.42.2.27.8.1.19
+createTimestamp: 20191031184644.809Z
 m-name: pwdFailureTime
-m-description: The timestamps of the last consecutive authentication failures
-entryUUID: d9eb7264-2c4f-4d16-ae4e-a4e7a4d58cf3
-entryCSN: 20130919065345.503000Z#000000#000#000000
-entryParentId: dda02085-cefb-4fca-be6a-80c8c0b760fb
-createTimestamp: 20130919065351.883Z
+entryParentId: 5c0b5bb7-2e9a-46d8-b81e-75eafc5ad848

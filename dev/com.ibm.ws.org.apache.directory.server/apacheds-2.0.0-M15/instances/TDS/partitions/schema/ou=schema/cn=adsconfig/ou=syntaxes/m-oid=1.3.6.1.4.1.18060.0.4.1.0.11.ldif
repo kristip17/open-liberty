@@ -1,14 +1,14 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.0.11,ou=syntaxes,cn=adsconfig,ou=schema
-m-oid: 1.3.6.1.4.1.18060.0.4.1.0.11
-creatorsname: uid=admin,ou=system
+entrycsn: 20100111202214.878000Z#000000#000#000000
+m-description: Deref Alias
+m-obsolete: FALSE
 objectclass: top
 objectclass: metaTop
 objectclass: metaSyntax
-x-not-human-readable: FALSE
-m-description: Deref Alias
-m-obsolete: FALSE
-entryUUID: cb3376af-f07f-4eee-97b5-e998cbec1bc9
-entrycsn: 20100111202214.878000Z#000000#000#000000
-entryParentId: 0f5a07a8-fa21-4486-aed9-8e78cf29fa54
+m-oid: 1.3.6.1.4.1.18060.0.4.1.0.11
 createtimestamp: 20100111145217Z
+creatorsname: uid=admin,ou=system
+x-not-human-readable: FALSE
+entryUUID: 57b6cb40-ff29-43c3-8c83-e7bbeed5f874
+entryParentId: 53ff3e0e-2c5a-4f53-8840-1bf3c665fa52

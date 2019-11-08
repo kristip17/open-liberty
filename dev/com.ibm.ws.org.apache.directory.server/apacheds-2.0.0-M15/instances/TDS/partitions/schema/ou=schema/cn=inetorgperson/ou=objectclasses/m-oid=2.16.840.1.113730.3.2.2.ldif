@@ -1,14 +1,5 @@
 version: 1
 dn: m-oid=2.16.840.1.113730.3.2.2,ou=objectClasses,cn=inetorgperson,ou=schema
-m-oid: 2.16.840.1.113730.3.2.2
-creatorsname: uid=admin,ou=system
-objectclass: metaObjectClass
-objectclass: metaTop
-objectclass: top
-m-name: inetOrgPerson
-m-description: RFC2798: Internet Organizational Person
-m-supobjectclass: organizationalPerson
-entryUUID: bd186df9-45b3-4ac5-a1b8-61a075c0de3f
 m-may: audio
 m-may: businessCategory
 m-may: carLicense
@@ -36,6 +27,15 @@ m-may: x500UniqueIdentifier
 m-may: preferredLanguage
 m-may: userSMIMECertificate
 m-may: userPKCS12
-entryCSN: 20130919065345.328000Z#000000#000#000000
-entryParentId: e4e7d892-2902-4ef6-8a72-19c1f7992376
-createTimestamp: 20130919065352.054Z
+entryCSN: 20191031184642.544000Z#000000#000#000000
+m-supobjectclass: organizationalPerson
+m-description: RFC2798: Internet Organizational Person
+m-oid: 2.16.840.1.113730.3.2.2
+objectclass: metaObjectClass
+objectclass: metaTop
+objectclass: top
+createTimestamp: 20191031184645.046Z
+m-name: inetOrgPerson
+creatorsname: uid=admin,ou=system
+entryUUID: e2adac82-23b5-4c51-8cde-1fa9a6f2f5a8
+entryParentId: 68f3b2c4-5a25-4a25-9436-079a85f90b00

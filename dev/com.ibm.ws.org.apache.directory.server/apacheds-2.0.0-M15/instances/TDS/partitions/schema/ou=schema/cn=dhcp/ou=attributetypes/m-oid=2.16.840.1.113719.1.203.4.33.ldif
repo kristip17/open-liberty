@@ -1,22 +1,22 @@
 version: 1
 dn: m-oid=2.16.840.1.113719.1.203.4.33,ou=attributeTypes,cn=dhcp,ou=schema
+entryCSN: 20191031184642.438000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
-objectclass: metaAttributeType
-objectclass: metaTop
-objectclass: top
-m-equality: caseIgnoreIA5Match
+m-nousermodification: FALSE
 m-syntax: 1.3.6.1.4.1.1466.115.121.1.40
 m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 2.16.840.1.113719.1.203.4.33
-m-name: dhcpRelayAgentInfo
+entryUUID: e35fa87b-3590-41a6-9b21-937454f1eac7
+m-equality: caseIgnoreIA5Match
 m-description: If the client request was received via a relay agent, this contai
  ns information about the relay agent that was available from the DHCP request. 
   This is a hex-encoded option value.
 m-obsolete: FALSE
-entryUUID: d4115c40-a61e-48d3-b091-bb74fe6b21d9
-entryCSN: 20130919065345.240000Z#000000#000#000000
-entryParentId: 920d556c-6037-40c6-8766-5417ea615dab
-createTimestamp: 20130919065352.169Z
+m-oid: 2.16.840.1.113719.1.203.4.33
+objectclass: metaAttributeType
+objectclass: metaTop
+objectclass: top
+createTimestamp: 20191031184650.847Z
+m-name: dhcpRelayAgentInfo
+entryParentId: 6454e12e-b004-411a-b5e7-6053eeffa49e

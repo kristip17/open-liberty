@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.7165.2.1.20,ou=attributeTypes,cn=samba,ou=schema
+entryCSN: 20191031184642.806000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
+m-singlevalue: TRUE
+entryUUID: 067fd500-8105-42a3-b2d7-d54a0c2fdd19
+m-equality: caseIgnoreIA5Match
+m-description: Security ID
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.7165.2.1.20
 objectclass: top
 objectclass: metaTop
 objectclass: metaAttributeType
-m-equality: caseIgnoreIA5Match
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
-m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 1.3.6.1.4.1.7165.2.1.20
+createTimestamp: 20191031184650.461Z
 m-name: sambaSID
-m-description: Security ID
-m-obsolete: FALSE
-entryUUID: 60cf500b-1e62-40b4-aa55-36f70f1b947b
-entryCSN: 20130919065345.567000Z#000000#000#000000
-entryParentId: ad480692-fbdc-43ac-a835-b4dd7e42d307
-createTimestamp: 20130919065353.314Z
+entryParentId: f7bc1ebe-8f92-49a2-87fc-bf561fbcbb62

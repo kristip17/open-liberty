@@ -1,19 +1,18 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.2312.4.2.3,ou=objectClasses,cn=autofs,ou=schema
+entryCSN: 20191031184642.143000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
+entryUUID: 405bb70a-cf9e-4334-b61a-11ee26c9cc63
+m-may: description
+m-typeobjectclass: STRUCTURAL
+m-supobjectclass: top
+m-must: cn
+m-description: An entry in an automounter map
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.2312.4.2.3
 objectclass: metaObjectClass
 objectclass: metaTop
 objectclass: top
-m-oid: 1.3.6.1.4.1.2312.4.2.3
+createTimestamp: 20191031184650.135Z
 m-name: automount
-m-description: An entry in an automounter map
-m-obsolete: FALSE
-m-supobjectclass: top
-m-must: cn
-m-must: automountInformation
-entryUUID: f8de9218-08ad-493c-8b33-fbac6e26561d
-m-may: description
-m-typeobjectclass: STRUCTURAL
-entryCSN: 20130919065344.979000Z#000000#000#000000
-entryParentId: afb5737a-e5aa-4e45-950c-fed678d48626
-createTimestamp: 20130919065353.245Z
+entryParentId: d27cabf2-295b-42a2-a3d5-854ab7a1f8e5

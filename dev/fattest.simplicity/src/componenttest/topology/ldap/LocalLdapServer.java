@@ -64,7 +64,7 @@ public class LocalLdapServer {
 
         String ADS_CONTROLS = "-Dapacheds.controls=org.apache.directory.api.ldap.codec.controls.cascade.CascadeFactory,org.apache.directory.api.ldap.codec.controls.manageDsaIT.ManageDsaITFactory,org.apache.directory.api.ldap.codec.controls.search.entryChange.EntryChangeFactory,org.apache.directory.api.ldap.codec.controls.search.pagedSearch.PagedResultsFactory,org.apache.directory.api.ldap.codec.controls.search.persistentSearch.PersistentSearchFactory,org.apache.directory.api.ldap.codec.controls.search.subentries.SubentriesFactory,org.apache.directory.api.ldap.extras.controls.ppolicy_impl.PasswordPolicyFactory,org.apache.directory.api.ldap.extras.controls.syncrepl_impl.SyncDoneValueFactory,org.apache.directory.api.ldap.extras.controls.syncrepl_impl.SyncInfoValueFactory,org.apache.directory.api.ldap.extras.controls.syncrepl_impl.SyncRequestValueFactory,org.apache.directory.api.ldap.extras.controls.syncrepl_impl.SyncStateValueFactory";
         String ADS_EXTENDED_OPERATIONS = "-Dapacheds.extendedOperations=org.apache.directory.api.ldap.extras.extended.ads_impl.cancel.CancelFactory,org.apache.directory.api.ldap.extras.extended.ads_impl.certGeneration.CertGenerationFactory,org.apache.directory.api.ldap.extras.extended.ads_impl.gracefulShutdown.GracefulShutdownFactory,org.apache.directory.api.ldap.extras.extended.ads_impl.storedProcedure.StoredProcedureFactory,org.apache.directory.api.ldap.extras.extended.ads_impl.gracefulDisconnect.GracefulDisconnectFactory";
-        String ADS_CLASSPATH = APACHE_DS_HOME + "/lib/apacheds-service-2.0.0-M15.jar";
+        String ADS_CLASSPATH = APACHE_DS_HOME + "/lib/apacheds-service-2.0.0.AM25.jar";
 
         String ADS_TDS_LOG4J_CONFIG = "-Dlog4j.configuration=file:" + APACHE_DS_HOME + "/instances/" + instanceName + "/conf/log4j.properties";
         String ADS_TDS_LOG_DIR = "-Dapacheds.log.dir=" + APACHE_DS_HOME + "/instances/" + instanceName + "/log";
@@ -72,12 +72,13 @@ public class LocalLdapServer {
 
         // Add "" to directory inputs if OS is windows
         if (OS_NAME.toLowerCase().startsWith("win")) {
-            ADS_CLASSPATH = "\"" + APACHE_DS_HOME + "/lib/apacheds-service-2.0.0-M15.jar\"";
+            ADS_CLASSPATH = "\"" + APACHE_DS_HOME + "/lib/apacheds-service-2.0.0.AM25.jar\"";
             ADS_TDS_LOG4J_CONFIG = "-Dlog4j.configuration=file:\"" + APACHE_DS_HOME + "/instances/" + instanceName + "/conf/log4j.properties\"";
             ADS_TDS_LOG_DIR = "-Dapacheds.log.dir=\"" + APACHE_DS_HOME + "/instances/" + instanceName + "/log\"";
             ADS_TDS_INSTANCE_HOME = "\"" + APACHE_DS_HOME + "/instances/" + instanceName + "\"";
         }
-        List<String> params = java.util.Arrays.asList(JAVA_COMMAND, ADS_CONTROLS, ADS_EXTENDED_OPERATIONS, ADS_TDS_LOG4J_CONFIG, ADS_TDS_LOG_DIR, "-cp", ADS_CLASSPATH,
+        List<String> params = java.util.Arrays.asList(JAVA_COMMAND, /* ADS_CONTROLS, ADS_EXTENDED_OPERATIONS, */ ADS_TDS_LOG4J_CONFIG, ADS_TDS_LOG_DIR, "-cp",
+                                                      ADS_CLASSPATH,
                                                       "org.apache.directory.server.UberjarMain", ADS_TDS_INSTANCE_HOME);
         Log.info(c, method, instanceName + " params : " + params.toString());
 

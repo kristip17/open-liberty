@@ -1,16 +1,8 @@
 version: 1
 dn: m-oid=2.5.6.10,ou=objectClasses,cn=core,ou=schema
+entryCSN: 20191031184642.282000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
-objectclass: metaObjectClass
-objectclass: metaTop
-objectclass: top
-m-oid: 2.5.6.10
-m-name: residentialPerson
-m-description: RFC2256: an residential person
-m-obsolete: FALSE
-m-supobjectclass: person
-m-must: l
-entryUUID: c9dd29b2-5de1-4e2d-a7bd-fc831d7fb837
+entryUUID: b6d2e23a-a5b2-4196-b0b3-92012b0dfaf4
 m-may: businessCategory
 m-may: x121Address
 m-may: registeredAddress
@@ -28,6 +20,14 @@ m-may: postalAddress
 m-may: physicalDeliveryOfficeName
 m-may: st
 m-typeobjectclass: STRUCTURAL
-entryCSN: 20130919065345.064000Z#000000#000#000000
-entryParentId: ac5601d1-10d2-4835-811d-55bb5203ca74
-createTimestamp: 20130919065353.146Z
+m-supobjectclass: person
+m-must: l
+m-description: RFC2256: an residential person
+m-obsolete: FALSE
+m-oid: 2.5.6.10
+objectclass: metaObjectClass
+objectclass: metaTop
+objectclass: top
+createTimestamp: 20191031184646.693Z
+m-name: residentialPerson
+entryParentId: b9c34277-e830-4e99-9bc0-28bd2988e4ff

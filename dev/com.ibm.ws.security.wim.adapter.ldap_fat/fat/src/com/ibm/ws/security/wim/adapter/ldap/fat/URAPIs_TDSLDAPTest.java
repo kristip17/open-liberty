@@ -145,11 +145,14 @@ public class URAPIs_TDSLDAPTest {
     public void checkPasswordWithBadCredentials() throws Exception {
         String user = "vmmtestuser";
         String password = "badPassword";
-        Log.info(c, "checkPasswordWithBadCredentials", "Checking bad credentials");
-        assertNull("Authentication should not succeed.",
-                   servlet.checkPassword(user, password));
-        assertNotNull("Expected CWIML4529E message.", server.waitForStringInLog("CWIML4529E"));
-        passwordChecker.checkForPasswordInAnyFormat(password);
+        int tries = 1000;
+        for (int i = 0; i < tries; i++) {
+            Log.info(c, "checkPasswordWithBadCredentials", "Checking bad credentials");
+            assertNull("Authentication should not succeed.",
+                       servlet.checkPassword(user, password));
+            assertNotNull("Expected CWIML4529E message.", server.waitForStringInLog("CWIML4529E"));
+            passwordChecker.checkForPasswordInAnyFormat(password);
+        }
     }
 
     /**
@@ -758,11 +761,11 @@ public class URAPIs_TDSLDAPTest {
     /**
      * Test UserRegistry APIs with a given name that contains some special characters that need to be escaped as specified in RFC 2253, Section 2.4.
      *
-     * @param user The user login name.
-     * @param uniqueUserId The unique user ID.
-     * @param securityName The user's expected security name.
-     * @param displayName The user's display name.
-     * @param group The group this user is a member of (usually containing the same special character).
+     * @param user          The user login name.
+     * @param uniqueUserId  The unique user ID.
+     * @param securityName  The user's expected security name.
+     * @param displayName   The user's display name.
+     * @param group         The group this user is a member of (usually containing the same special character).
      * @param uniqueGroupId The unique group ID corresponding to the group parameter.
      */
     private void testUserWithSpecialChar(String user, String uniqueUserId, String securityName, String displayName, String group, String uniqueGroupId) throws Exception {
@@ -843,11 +846,11 @@ public class URAPIs_TDSLDAPTest {
     /**
      * Test UserRegistry APIs with a given name that contain special characters that need to be escaped as specified in RFC 2253, Section 2.4.
      *
-     * @param group The group name.
-     * @param uniqueGroupId The unique group ID.
-     * @param groupDisplayName The group display name.
+     * @param group             The group name.
+     * @param uniqueGroupId     The unique group ID.
+     * @param groupDisplayName  The group display name.
      * @param groupSecurityName The group security name.
-     * @param user The user that is a member of the group, usually a user with the same special character.
+     * @param user              The user that is a member of the group, usually a user with the same special character.
      * @throws Exception If there was an unexpected failure.
      */
     private void testGroupWithSpecialChar(String group, String uniqueGroupId, String groupDisplayName, String groupSecurityName, String user) throws Exception {

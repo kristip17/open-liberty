@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.2.2.3,ou=attributeTypes,cn=apachedns,ou=schema
+entryCSN: 20191031184641.963000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
+m-singlevalue: TRUE
+entryUUID: d8e14e3b-1f50-480a-8cc9-1a1879a53b05
+m-equality: caseIgnoreIA5Match
+m-description: A domain name represented as a sequence of labels
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.18060.0.4.2.2.3
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreIA5Match
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
-m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 1.3.6.1.4.1.18060.0.4.2.2.3
+createTimestamp: 20191031184645.132Z
 m-name: apacheDnsDomainName
-m-description: A domain name represented as a sequence of labels
-m-obsolete: FALSE
-entryUUID: 62b54c9b-17c3-4489-a469-d09e8edd7d31
-entryCSN: 20130919065344.881000Z#000000#000#000000
-entryParentId: 56cc8548-e032-440d-bfa2-af397e97ff22
-createTimestamp: 20130919065352.016Z
+entryParentId: bffe90d2-32d7-480d-8559-b3ad10a9923b

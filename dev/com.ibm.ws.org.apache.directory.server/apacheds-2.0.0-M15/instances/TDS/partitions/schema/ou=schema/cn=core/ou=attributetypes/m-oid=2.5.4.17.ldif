@@ -1,21 +1,21 @@
 version: 1
 dn: m-oid=2.5.4.17,ou=attributeTypes,cn=core,ou=schema
+entryCSN: 20191031184642.224000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singlevalue: FALSE
+entryUUID: 27958bd4-1572-45c4-99a6-a413f3d721df
+m-substr: caseIgnoreSubstringsMatch
+m-equality: caseIgnoreMatch
+m-description: RFC2256: postal code
+m-obsolete: FALSE
+m-oid: 2.5.4.17
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreMatch
-m-substr: caseIgnoreSubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 2.5.4.17
+createTimestamp: 20191031184651.176Z
 m-name: postalCode
-m-description: RFC2256: postal code
-m-obsolete: FALSE
-entryUUID: 0722b8bc-7ecc-4b23-b1d0-bab1dc899932
-entryCSN: 20130919065345.040000Z#000000#000#000000
-entryParentId: 3738e923-39ad-428e-8f85-8e5ec1c49c21
-createTimestamp: 20130919065352.816Z
+entryParentId: 56b846d6-cb3d-4f01-bb0c-2d7d7258e28c

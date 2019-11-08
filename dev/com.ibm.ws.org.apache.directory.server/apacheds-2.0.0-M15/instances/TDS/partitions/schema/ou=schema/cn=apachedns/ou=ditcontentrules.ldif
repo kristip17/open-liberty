@@ -1,10 +1,10 @@
 version: 1
 dn: ou=ditContentRules,cn=apachedns,ou=schema
+entryCSN: 20191031184641.943000Z#000000#000#000000
+ou: ditcontentrules
 objectclass: organizationalUnit
 objectclass: top
+createTimestamp: 20191031184649.989Z
 creatorsname: uid=admin,ou=system
-entryUUID: c6695b82-9c71-40a1-93ec-c3c4f81cd441
-entryCSN: 20130919065344.845000Z#000001#000#000000
-entryParentId: 16b7c9d1-c3c7-4a6d-a541-2ea2d938f093
-ou: ditcontentrules
-createTimestamp: 20130919065351.585Z
+entryUUID: 2c66f349-342c-48fa-b279-d0c593dfe9d4
+entryParentId: 5ad3c827-b205-495b-b94a-9bf6e935d4ba

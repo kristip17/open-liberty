@@ -1,17 +1,17 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.3.803,ou=objectClasses,cn=adsconfig,ou=schema
-m-oid: 1.3.6.1.4.1.18060.0.4.1.3.803
-creatorsname: uid=admin,ou=system
-objectclass: top
-objectclass: metaTop
-objectclass: metaObjectClass
-m-name: ads-httpWebApp
-m-description: a web app
+entryCSN: 20191031184641.785000Z#000000#000#000000
 m-supobjectclass: ads-base
-entryUUID: a2cbb205-362e-43a5-8013-b5f924ddea48
 m-must: ads-httpWarFile
 m-must: ads-id
 m-must: ads-httpAppCtxPath
-entryCSN: 20130919065344.742000Z#000000#000#000000
-entryParentId: 87769cc1-b86e-404a-8d67-bcb407eabaf2
-createTimestamp: 20130919065353.511Z
+m-description: a web app
+m-oid: 1.3.6.1.4.1.18060.0.4.1.3.803
+objectclass: top
+objectclass: metaTop
+objectclass: metaObjectClass
+createTimestamp: 20191031184647.315Z
+m-name: ads-httpWebApp
+creatorsname: uid=admin,ou=system
+entryUUID: 1fe676a0-c86e-4709-86da-89077212ecdf
+entryParentId: 87320f3f-9f18-47e0-a467-9094c339cc8f

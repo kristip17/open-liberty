@@ -250,7 +250,8 @@ public class LdapAdapter extends BaseRepository implements ConfiguredRepository 
     }
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL)
-    protected void setSSLSupport(SSLSupportOptional sslSupport) {}
+    protected void setSSLSupport(SSLSupportOptional sslSupport) {
+    }
 
     /**
      * Method to get the given Entity from the underlying repository
@@ -970,27 +971,27 @@ public class LdapAdapter extends BaseRepository implements ConfiguredRepository 
      * @param propNames
      * @param attrs
      * @throws WIMException
-     *             NOTE: BEHAVIOR CHANGE USING APAR PM46133
-     *             Before: Properties having binary data-type were not being parsed and pushed into populated Entity.
-     *             This method used to iterate every attribute returned by JNDI_CALL and parse them according to their Property-to-Attribute mapping from wimconfig.xml
-     *             After: Whenever a LDAP returned object(attributes) ;then they'd be returned as
-     *             DN: CN=myCN1,o=ibm ExtId: E525BE85647D750E882578E300444D6A UniqueName: CN=myCN1,o=ibm Type: PersonAccount
-     *             Attributes: {
-     *             dominounid=Attribute ID: dominounid
-     *             Attribute values: E525BE85647D750E882578E300444D6A
-     *             ; jpegphoto;binary=Attribute ID: jpegphoto;binary
-     *             Attribute values: [B@4b3a4b3a
-     *             ; objectclass=Attribute ID: objectclass
-     *             Attribute values: inetorgperson,organizationalPerson,person,top
-     *             ; sn=Attribute ID: sn
-     *             Attribute values: mySN1
-     *             ; cn=Attribute ID: cn
-     *             Attribute values: myCN1
-     *             }
-     *             all attributes EXCEPT jpegphoto(binary type) are having a common syntax <attrName>=Attribute ID:<attrName> Attribute values:<someValue>
-     *             Attributes of type binary have added it's type in the attribute name itself; hence method can't find/validate said attribute (jpegphoto;binary);
-     *             hence fails to retrieve attribute and populate it's value in Entry.
-     *             PS. These changes are not going to affect original behaviour; New changes will be serving binary dataType attributes too!
+     *                          NOTE: BEHAVIOR CHANGE USING APAR PM46133
+     *                          Before: Properties having binary data-type were not being parsed and pushed into populated Entity.
+     *                          This method used to iterate every attribute returned by JNDI_CALL and parse them according to their Property-to-Attribute mapping from wimconfig.xml
+     *                          After: Whenever a LDAP returned object(attributes) ;then they'd be returned as
+     *                          DN: CN=myCN1,o=ibm ExtId: E525BE85647D750E882578E300444D6A UniqueName: CN=myCN1,o=ibm Type: PersonAccount
+     *                          Attributes: {
+     *                          dominounid=Attribute ID: dominounid
+     *                          Attribute values: E525BE85647D750E882578E300444D6A
+     *                          ; jpegphoto;binary=Attribute ID: jpegphoto;binary
+     *                          Attribute values: [B@4b3a4b3a
+     *                          ; objectclass=Attribute ID: objectclass
+     *                          Attribute values: inetorgperson,organizationalPerson,person,top
+     *                          ; sn=Attribute ID: sn
+     *                          Attribute values: mySN1
+     *                          ; cn=Attribute ID: cn
+     *                          Attribute values: myCN1
+     *                          }
+     *                          all attributes EXCEPT jpegphoto(binary type) are having a common syntax <attrName>=Attribute ID:<attrName> Attribute values:<someValue>
+     *                          Attributes of type binary have added it's type in the attribute name itself; hence method can't find/validate said attribute (jpegphoto;binary);
+     *                          hence fails to retrieve attribute and populate it's value in Entry.
+     *                          PS. These changes are not going to affect original behaviour; New changes will be serving binary dataType attributes too!
      */
     private void populateEntity(Entity entity, List<String> propNames, Attributes attrs) throws WIMException {
         if (propNames == null || propNames.size() == 0 || attrs == null) {
@@ -1255,10 +1256,10 @@ public class LdapAdapter extends BaseRepository implements ConfiguredRepository 
     /**
      * Process the value of a property.
      *
-     * @param entity The entity to process the value for.
-     * @param propName The property name to process.
-     * @param dataType The data type of the property.
-     * @param syntax The syntax for the property.
+     * @param entity    The entity to process the value for.
+     * @param propName  The property name to process.
+     * @param dataType  The data type of the property.
+     * @param syntax    The syntax for the property.
      * @param ldapValue The value from the LDAP server.
      * @return The processed value.
      * @throws WIMException If there was an issue processing the property's value.
@@ -3011,15 +3012,16 @@ public class LdapAdapter extends BaseRepository implements ConfiguredRepository 
 
     @FFDCIgnore(javax.naming.AuthenticationException.class)
     private void authenticateWithPassword(String dn, byte[] pwd, String principalName) throws WIMException {
+        TimedDirContext ctx = null;
         try {
-            TimedDirContext ctx = null;
+
             // Check if user wants to bind to LDAP server with input principal name. If not, default
             // behavior is to bind using user DN.
             if (iLdapConfigMgr.isSetUsePrincipalNameForLogin())
                 ctx = iLdapConn.getContextManager().createDirContext(principalName, pwd);
             else
                 ctx = iLdapConn.getContextManager().createDirContext(dn, pwd);
-            ctx.close();
+
         }
 
         catch (javax.naming.AuthenticationNotSupportedException e) {
@@ -3042,6 +3044,17 @@ public class LdapAdapter extends BaseRepository implements ConfiguredRepository 
                                                                                           tc,
                                                                                           WIMMessageKey.NAMING_EXCEPTION,
                                                                                           WIMMessageHelper.generateMsgParms(e.toString(true))));
+        } finally {
+            if (ctx != null) {
+                try {
+                    ctx.close();
+                } catch (NamingException e) {
+                    throw new WIMSystemException(WIMMessageKey.NAMING_EXCEPTION, Tr.formatMessage(
+                                                                                                  tc,
+                                                                                                  WIMMessageKey.NAMING_EXCEPTION,
+                                                                                                  WIMMessageHelper.generateMsgParms(e.toString(true))));
+                }
+            }
         }
     }
 
@@ -3131,7 +3144,8 @@ public class LdapAdapter extends BaseRepository implements ConfiguredRepository 
      *
      * @param ldapDN LDAP DN
      */
-    protected void deletePreExit(String ldapDN) throws WIMException {}
+    protected void deletePreExit(String ldapDN) throws WIMException {
+    }
 
     /**
      * Get all the descendants of the given DN.

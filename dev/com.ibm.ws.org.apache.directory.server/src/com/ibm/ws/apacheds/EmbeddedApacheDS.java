@@ -14,9 +14,13 @@ package com.ibm.ws.apacheds;
 import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.directory.api.ldap.codec.controls.search.pagedSearch.PagedResultsFactory;
 import org.apache.directory.api.ldap.codec.standalone.StandaloneLdapApiService;
 import org.apache.directory.api.ldap.model.entry.Entry;
@@ -26,10 +30,10 @@ import org.apache.directory.api.ldap.model.exception.LdapInvalidDnException;
 import org.apache.directory.api.ldap.model.name.Dn;
 import org.apache.directory.api.ldap.model.schema.SchemaManager;
 import org.apache.directory.api.ldap.model.schema.registries.SchemaLoader;
-import org.apache.directory.api.ldap.schemaextractor.SchemaLdifExtractor;
-import org.apache.directory.api.ldap.schemaextractor.impl.DefaultSchemaLdifExtractor;
-import org.apache.directory.api.ldap.schemaloader.LdifSchemaLoader;
-import org.apache.directory.api.ldap.schemamanager.impl.DefaultSchemaManager;
+import org.apache.directory.api.ldap.schema.extractor.SchemaLdifExtractor;
+import org.apache.directory.api.ldap.schema.extractor.impl.DefaultSchemaLdifExtractor;
+import org.apache.directory.api.ldap.schema.loader.LdifSchemaLoader;
+import org.apache.directory.api.ldap.schema.manager.impl.DefaultSchemaManager;
 import org.apache.directory.api.util.exception.Exceptions;
 import org.apache.directory.server.constants.ServerDNConstants;
 import org.apache.directory.server.core.DefaultDirectoryService;
@@ -73,13 +77,32 @@ public class EmbeddedApacheDS {
         System.setProperty(StandaloneLdapApiService.CONTROLS_LIST, PagedResultsFactory.class.getName());
     }
 
+    public static void deleteDir(final Path folder) throws IOException {
+        Files.walkFileTree(folder, new SimpleFileVisitor<Path>() {
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                Files.delete(file);
+                return FileVisitResult.CONTINUE;
+            }
+
+            @Override
+            public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                if (exc != null) {
+                    throw exc;
+                }
+                Files.delete(dir);
+                return FileVisitResult.CONTINUE;
+            }
+        });
+    }
+
     /**
      * Creates a new instance of EmbeddedADS. It initializes the directory
      * service.
      *
      * @param instance The name of this ADS instance.
      * @throws Exception
-     *             If something went wrong
+     *                       If something went wrong
      */
     public EmbeddedApacheDS(String instance) throws Exception {
         Log.info(c, "init", "Initialize " + instance);
@@ -97,7 +120,8 @@ public class EmbeddedApacheDS {
              * Can replace with java.nio.file.Files.delete(...) when we stop compiling with
              * Java 6 compliance.
              */
-            FileUtils.deleteDirectory(workDir);
+            deleteDir(workDir.toPath());
+
             Log.info(c, "init", "Removed previous directory");
         }
 
@@ -171,7 +195,7 @@ public class EmbeddedApacheDS {
      */
     public Partition addPartition(String partitionId, String partitionDn) throws Exception {
         Log.info(c, "addPartition", "entry " + partitionId + " " + partitionDn);
-        JdbmPartition partition = new JdbmPartition(this.service.getSchemaManager());
+        JdbmPartition partition = new JdbmPartition(this.service.getSchemaManager(), null);
         partition.setId(partitionId);
         partition.setPartitionPath(new File(this.service.getInstanceLayout().getPartitionsDirectory(), partitionId).toURI());
         partition.setSuffixDn(new Dn(partitionDn));
@@ -213,9 +237,9 @@ public class EmbeddedApacheDS {
      * injects the context entries for the created partitions.
      *
      * @param workDir
-     *            the directory to be used for storing the data
+     *                    the directory to be used for storing the data
      * @throws Exception
-     *             if there were some problems while initializing the system
+     *                       if there were some problems while initializing the system
      */
     private void initDirectoryService(final File workDir) throws Exception {
         // Initialize the LDAP service
@@ -241,7 +265,7 @@ public class EmbeddedApacheDS {
          * DO NOT add this via addPartition() method, trunk code complains about
          * duplicate partition while initializing.
          */
-        final JdbmPartition systemPartition = new JdbmPartition(this.service.getSchemaManager());
+        final JdbmPartition systemPartition = new JdbmPartition(this.service.getSchemaManager(), null);
         systemPartition.setId("system");
         systemPartition.setPartitionPath(new File(this.service.getInstanceLayout().getPartitionsDirectory(), systemPartition.getId()).toURI());
         systemPartition.setSuffixDn(new Dn(ServerDNConstants.SYSTEM_DN));
@@ -336,7 +360,7 @@ public class EmbeddedApacheDS {
      * service
      *
      * @throws Exception
-     *             if the schema LDIF files are not found on the classpath
+     *                       if the schema LDIF files are not found on the classpath
      */
     private void initSchemaPartition() throws Exception {
         final InstanceLayout instanceLayout = this.service.getInstanceLayout();
@@ -375,7 +399,7 @@ public class EmbeddedApacheDS {
         /*
          * Init the LdifPartition with schema
          */
-        final LdifPartition schemaLdifPartition = new LdifPartition(schemaManager);
+        final LdifPartition schemaLdifPartition = new LdifPartition(schemaManager, null);
         schemaLdifPartition.setPartitionPath(schemaPartitionDirectory.toURI());
 
         /*
@@ -403,7 +427,7 @@ public class EmbeddedApacheDS {
      * @param dn The distinguished name of the new entry.
      * @return The new {@link Entry} instance.
      * @throws LdapInvalidDnException
-     * @throws LdapException If there was an issue creating the new entry.
+     * @throws LdapException          If there was an issue creating the new entry.
      */
     public Entry newEntry(String dn) throws LdapException {
         return this.service.newEntry(new Dn(dn));

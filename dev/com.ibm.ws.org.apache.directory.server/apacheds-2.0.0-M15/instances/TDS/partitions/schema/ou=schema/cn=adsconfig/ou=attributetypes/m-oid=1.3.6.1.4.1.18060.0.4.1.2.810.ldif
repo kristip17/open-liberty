@@ -1,19 +1,19 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.810,ou=attributeTypes,cn=adsconfig,ou=schema
+entryCSN: 20191031184641.662000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
+m-length: 0
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.44
+m-singlevalue: TRUE
+m-ordering: caseExactOrderingMatch
+entryUUID: ea02cdb2-0c9d-4e23-9e41-9cc740ac87bd
+m-substr: caseExactSubstringsMatch
+m-equality: caseExactMatch
+m-description: Fully qualified class name of SASL mechanism implementation
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.810
 objectclass: metaTop
 objectclass: metaAttributeType
 objectclass: top
-m-equality: caseExactMatch
-m-ordering: caseExactOrderingMatch
-m-substr: caseExactSubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.44
-m-singlevalue: TRUE
-m-length: 0
-m-oid: 1.3.6.1.4.1.18060.0.4.1.2.810
+createTimestamp: 20191031184645.452Z
 m-name: ads-saslMechClassName
-m-description: Fully qualified class name of SASL mechanism implementation
-entryUUID: 38fe6976-66fa-4ea7-85f8-95cc97b6a638
-entryCSN: 20130919065344.664000Z#000000#000#000000
-entryParentId: 1794946d-6c63-4ad5-9a2f-b4badd22d42f
-createTimestamp: 20130919065353.134Z
+entryParentId: c03ad512-4172-4443-b130-8ea59850a4d8

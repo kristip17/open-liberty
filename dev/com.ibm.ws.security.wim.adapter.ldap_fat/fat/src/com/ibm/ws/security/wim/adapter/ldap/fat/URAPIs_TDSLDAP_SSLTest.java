@@ -225,11 +225,14 @@ public class URAPIs_TDSLDAP_SSLTest {
     public void checkPasswordWithBadCredentials() throws Exception {
         String user = "vmmtestuser";
         String password = "badPassword";
-        Log.info(c, "checkPasswordWithBadCredentials", "Checking bad credentials");
-        assertNull("Authentication should not succeed.",
-                   servlet.checkPassword(user, password));
-        assertNotNull("Expected CWIML4529E message.", server.waitForStringInLog("CWIML4529E"));
-        //passwordChecker.checkForPasswordInAnyFormat(password);
+        int tries = 1000;
+        for (int i = 0; i < tries; i++) {
+            Log.info(c, "checkPasswordWithBadCredentials", "Checking bad credentials");
+            assertNull("Authentication should not succeed.",
+                       servlet.checkPassword(user, password));
+            assertNotNull("Expected CWIML4529E message.", server.waitForStringInLog("CWIML4529E"));
+            //passwordChecker.checkForPasswordInAnyFormat(password);
+        }
     }
 
     /**

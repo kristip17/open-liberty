@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.7165.2.1.31,ou=attributeTypes,cn=samba,ou=schema
+entryCSN: 20191031184642.816000Z#000001#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.27
+m-singlevalue: TRUE
+entryUUID: 114ad0a6-afd4-4823-a574-0fcd42344c50
+m-equality: integerMatch
+m-description: Timestamp of last logoff
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.7165.2.1.31
 objectclass: top
 objectclass: metaTop
 objectclass: metaAttributeType
-m-equality: integerMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.27
-m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 1.3.6.1.4.1.7165.2.1.31
+createTimestamp: 20191031184644.555Z
 m-name: sambaLogoffTime
-m-description: Timestamp of last logoff
-m-obsolete: FALSE
-entryUUID: 697632ba-8fc8-49a6-bb84-8bfd70f46713
-entryCSN: 20130919065345.572000Z#000001#000#000000
-entryParentId: ad480692-fbdc-43ac-a835-b4dd7e42d307
-createTimestamp: 20130919065351.409Z
+entryParentId: f7bc1ebe-8f92-49a2-87fc-bf561fbcbb62

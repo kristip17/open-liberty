@@ -1,4 +1,4 @@
-echo on
+@echo off
 rem Licensed to the Apache Software Foundation (ASF) under one or more
 rem contributor license agreements.  See the NOTICE file distributed with
 rem this work for additional information regarding copyright ownership.
@@ -18,7 +18,7 @@ rem ---------------------------------------------------------------------------
 rem Append to CLASSPATH
 rem Borrowed from apache-tomcat
 rem
-rem $Id: cpappend.bat 747975 2009-02-26 00:20:50Z felixk $
+rem $Id$
 rem ---------------------------------------------------------------------------
 
 rem Process the first argument

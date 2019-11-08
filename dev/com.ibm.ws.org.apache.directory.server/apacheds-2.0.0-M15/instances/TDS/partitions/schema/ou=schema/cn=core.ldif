@@ -1,11 +1,11 @@
 version: 1
 dn: cn=core,ou=schema
+entryCSN: 20191031184641.455000Z#000000#000#000000
+cn: core
 objectclass: metaSchema
 objectclass: top
-creatorsname: uid=admin,ou=system
-cn: core
-entryUUID: 75d345fc-a54d-492c-ba16-536cd6a76500
+createTimestamp: 20191031184646.416Z
 m-dependencies: system
-entryCSN: 20130919065344.516000Z#000001#000#000000
-entryParentId: 3456708f-5a09-4e37-8bcb-59f59172fa8c
-createTimestamp: 20130919065353.274Z
+creatorsname: uid=admin,ou=system
+entryUUID: b76aeec3-e0b2-4d73-a3f9-cb401988549a
+entryParentId: c6297930-0bd8-4698-a903-28d0a566d6b6

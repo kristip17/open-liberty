@@ -1,22 +1,22 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.35,ou=attributeTypes,cn=apache,ou=schema
-m-supattributetype: modifyTimestamp
+entryCSN: 20191031184641.845000Z#000000#000#000000
+m-usage: DIRECTORY_OPERATION
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.24
+m-singlevalue: FALSE
+m-ordering: generalizedTimeOrderingMatch
+entryUUID: f578dc56-f0c0-4698-ac3d-4fef6e92d2d6
+m-supattributetype: modifyTimestamp
+m-equality: generalizedTimeMatch
+m-description: time which schema was modified
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.35
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: generalizedTimeMatch
-m-ordering: generalizedTimeOrderingMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.24
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: DIRECTORY_OPERATION
-m-oid: 1.3.6.1.4.1.18060.0.4.1.2.35
+createTimestamp: 20191031184651.583Z
 m-name: schemaModifyTimestamp
-m-description: time which schema was modified
-m-obsolete: FALSE
-entryUUID: f30a2f71-f94a-40cd-9a5a-c816102e9157
-entryCSN: 20130919065344.778000Z#000000#000#000000
-entryParentId: 82e8e6b4-db49-43a8-bdcd-8eaf3e877f30
-createTimestamp: 20130919065351.960Z
+entryParentId: d317180f-dc69-4f5d-83f1-bf4e8586f37c

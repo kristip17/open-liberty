@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.0.2.8,ou=attributeTypes,cn=apachemeta,ou=schema
+entryCSN: 20191031184642.071000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.18060.0.4.0.0.1
+m-singlevalue: TRUE
+entryUUID: 7cb1e41e-f59c-4623-81b8-c42c1ea58542
+m-equality: objectClassTypeMatch
+m-description: The objectclass type
+m-obsolete: FALSE
 objectclass: top
 objectclass: metaTop
 objectclass: metaAttributeType
-m-equality: objectClassTypeMatch
-m-syntax: 1.3.6.1.4.1.18060.0.4.0.0.1
-m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
 m-oid: 1.3.6.1.4.1.18060.0.4.0.2.8
+createTimestamp: 20191031184646.806Z
 m-name: m-typeObjectClass
-m-description: The objectclass type
-m-obsolete: FALSE
-entryUUID: 12200a56-1181-4254-9a63-51d7d83f6797
-entryCSN: 20130919065344.936000Z#000000#000#000000
-entryParentId: 922ee3f2-ef70-42fd-9757-18594e8a255b
-createTimestamp: 20130919065353.437Z
+entryParentId: d4f0a409-dcd7-4632-aaf3-af08fa64aa28

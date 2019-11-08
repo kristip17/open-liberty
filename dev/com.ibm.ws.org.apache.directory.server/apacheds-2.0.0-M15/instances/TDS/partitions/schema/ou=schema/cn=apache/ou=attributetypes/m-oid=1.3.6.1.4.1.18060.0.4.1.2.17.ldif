@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.17,ou=attributeTypes,cn=apache,ou=schema
+entryCSN: 20191031184641.824000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
+m-singlevalue: TRUE
+entryUUID: 52c81913-a0d9-46aa-9f03-b496059e8d65
+m-equality: caseIgnoreIA5Match
+m-description: A string up to 256 characters in length
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.17
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreIA5Match
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
-m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 1.3.6.1.4.1.18060.0.4.1.2.17
+createTimestamp: 20191031184645.606Z
 m-name: apacheCatalogEntryName
-m-description: A string up to 256 characters in length
-m-obsolete: FALSE
-entryUUID: 6773c450-31d2-46be-bf3a-6757c0e9d79c
-entryCSN: 20130919065344.771000Z#000000#000#000000
-entryParentId: 82e8e6b4-db49-43a8-bdcd-8eaf3e877f30
-createTimestamp: 20130919065351.798Z
+entryParentId: d317180f-dc69-4f5d-83f1-bf4e8586f37c

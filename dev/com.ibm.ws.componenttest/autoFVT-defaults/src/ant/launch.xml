@@ -557,7 +557,7 @@
 					<echo> For first ldap Non-SSL port : ${ldap.1.port} and SSL port : ${ldap.1.ssl.port} </echo>
 					<echo> For second ldap Non-SSL port : ${ldap.2.port} and SSL port : ${ldap.2.ssl.port} </echo>
 					<echo> For third ldap Non-SSL port : ${ldap.3.port} and SSL port : ${ldap.3.ssl.port} </echo>
-					<copy file="${basedir}/apacheds-2.0.0-M15/instances/TDS/conf/config.ldif.org" tofile="${basedir}/apacheds-2.0.0-M15/instances/TDS/conf/config.ldif" overwrite="true">
+					<copy file="${basedir}/apacheds-2.0.0-M15/instances/TDS/conf/config.ldif.migrated" tofile="${basedir}/apacheds-2.0.0-M15/instances/TDS/conf/config.ldif" overwrite="true">
 						<filterchain>
 							<tokenfilter>
 								<replaceregex pattern="^[ \t]*ads-systemport: 10389[ \t]*" replace="ads-systemport: ${ldap.1.port}" />
@@ -567,7 +567,7 @@
 						</filterchain>
 					</copy>
 
-					<copy file="${basedir}/apacheds-2.0.0-M15/instances/AD/conf/config.ldif.org" tofile="${basedir}/apacheds-2.0.0-M15/instances/AD/conf/config.ldif" overwrite="true">
+					<copy file="${basedir}/apacheds-2.0.0-M15/instances/AD/conf/config.ldif.migrated" tofile="${basedir}/apacheds-2.0.0-M15/instances/AD/conf/config.ldif" overwrite="true">
 						<filterchain>
 							<tokenfilter>
 								<replaceregex pattern="^[ \t]*ads-systemport: 20389[ \t]*" replace="ads-systemport: ${ldap.2.port}" />
@@ -577,7 +577,7 @@
 						</filterchain>
 					</copy>
 
-					<copy file="${basedir}/apacheds-2.0.0-M15/instances/SunOne/conf/config.ldif.org" tofile="${basedir}/apacheds-2.0.0-M15/instances/SunOne/conf/config.ldif" overwrite="true">
+					<copy file="${basedir}/apacheds-2.0.0-M15/instances/SunOne/conf/config.ldif.migrated" tofile="${basedir}/apacheds-2.0.0-M15/instances/SunOne/conf/config.ldif" overwrite="true">
 						<filterchain>
 							<tokenfilter>
 								<replaceregex pattern="^[ \t]*ads-systemport: 30389[ \t]*" replace="ads-systemport: ${ldap.3.port}" />

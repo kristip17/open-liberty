@@ -1,21 +1,21 @@
 version: 1
 dn: m-oid=2.16.840.1.113730.3.1.1,ou=attributeTypes,cn=inetorgperson,ou=schema
+entryCSN: 20191031184642.537000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singlevalue: FALSE
+entryUUID: cc4d2ec4-c477-4ae8-966f-81c25e298245
+m-substr: caseIgnoreSubstringsMatch
+m-equality: caseIgnoreMatch
+m-description: RFC2798: vehicle license or registration plate
+m-obsolete: FALSE
+m-oid: 2.16.840.1.113730.3.1.1
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreMatch
-m-substr: caseIgnoreSubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 2.16.840.1.113730.3.1.1
+createTimestamp: 20191031184648.313Z
 m-name: carLicense
-m-description: RFC2798: vehicle license or registration plate
-m-obsolete: FALSE
-entryUUID: 0f2cf002-8ffe-4924-b134-fc0aa21fe452
-entryCSN: 20130919065345.324000Z#000000#000#000000
-entryParentId: 4a583820-a15a-48a1-9b6c-8575d6c12daf
-createTimestamp: 20130919065351.705Z
+entryParentId: 87020fb8-0f58-435f-8d06-5549a8ca6442

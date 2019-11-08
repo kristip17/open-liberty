@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.43,ou=attributeTypes,cn=apache,ou=schema
+entryCSN: 20191031184641.857000Z#000000#000#000000
+m-usage: DSA_OPERATION
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: TRUE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.27
+m-singlevalue: FALSE
+entryUUID: b8724263-3e69-4615-a3c7-241b113d70f2
+m-equality: integerMatch
+m-description: Index attribute used to track sub level searches
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.43
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: integerMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.27
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: TRUE
-m-usage: DSA_OPERATION
-m-oid: 1.3.6.1.4.1.18060.0.4.1.2.43
+createTimestamp: 20191031184650.059Z
 m-name: apacheSubLevel
-m-description: Index attribute used to track sub level searches
-m-obsolete: FALSE
-entryUUID: 69ada8d4-b3c3-4478-addd-cfd94ba984a7
-entryCSN: 20130919065344.782000Z#000001#000#000000
-entryParentId: 82e8e6b4-db49-43a8-bdcd-8eaf3e877f30
-createTimestamp: 20130919065352.394Z
+entryParentId: d317180f-dc69-4f5d-83f1-bf4e8586f37c

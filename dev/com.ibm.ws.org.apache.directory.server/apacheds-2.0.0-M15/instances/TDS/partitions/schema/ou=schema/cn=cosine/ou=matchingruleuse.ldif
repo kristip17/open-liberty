@@ -1,10 +1,10 @@
 version: 1
 dn: ou=matchingRuleUse,cn=cosine,ou=schema
+entryCSN: 20191031184642.321000Z#000000#000#000000
+ou: matchingruleuse
 objectclass: organizationalUnit
 objectclass: top
+createTimestamp: 20191031184644.306Z
 creatorsname: uid=admin,ou=system
-entryUUID: cfac85db-1be4-428c-8181-b2ec2a2e1a7e
-entryCSN: 20130919065345.098000Z#000001#000#000000
-entryParentId: 95620dd4-5113-4789-bde3-6c10e43f5663
-ou: matchingruleuse
-createTimestamp: 20130919065353.762Z
+entryUUID: 7ebbd719-9b16-417d-a5c4-fd05c09cc82d
+entryParentId: 3e027470-bed8-4fa6-aeb3-9a7706bd81d8

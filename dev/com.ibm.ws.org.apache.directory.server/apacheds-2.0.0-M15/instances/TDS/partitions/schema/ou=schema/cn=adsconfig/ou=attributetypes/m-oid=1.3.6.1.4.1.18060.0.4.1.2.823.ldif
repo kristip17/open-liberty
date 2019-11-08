@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.823,ou=attributeTypes,cn=adsconfig,ou=schema
-m-supattributetype: ads-transportAddress
+entryCSN: 20191031184641.682000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
+m-length: 0
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
+m-singlevalue: TRUE
+m-ordering: caseIgnoreOrderingMatch
+entryUUID: f0880b10-f015-44eb-9e62-54b58dbb79b9
+m-substr: caseIgnoreSubstringsMatch
+m-supattributetype: ads-transportAddress
+m-equality: caseIgnoreIA5Match
+m-description: replication provider host name
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.823
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreIA5Match
-m-ordering: caseIgnoreOrderingMatch
-m-substr: caseIgnoreSubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
-m-singlevalue: TRUE
-m-length: 0
-m-oid: 1.3.6.1.4.1.18060.0.4.1.2.823
+createTimestamp: 20191031184648.642Z
 m-name: ads-replProvHostName
-m-description: replication provider host name
-entryUUID: 59e64c8a-6519-4bd5-bb9b-4f1e87eaa7d0
-entryCSN: 20130919065344.676000Z#000000#000#000000
-entryParentId: 1794946d-6c63-4ad5-9a2f-b4badd22d42f
-createTimestamp: 20130919065352.666Z
+entryParentId: c03ad512-4172-4443-b130-8ea59850a4d8

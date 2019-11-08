@@ -1,12 +1,12 @@
 version: 1
 dn: m-oid=2.5.13.22,ou=normalizers,cn=system,ou=schema
+entryCSN: 20191031184643.018000Z#000000#000#000000
 m-oid: 2.5.13.22
-m-fqcn: org.apache.directory.api.ldap.model.schema.normalizers.NoOpNormalizer
 objectclass: metaNormalizer
 objectclass: metaTop
 objectclass: top
+createTimestamp: 20191031184644.698Z
 creatorsname: uid=admin,ou=system
-entryUUID: 712d525d-f07b-413d-8dc8-81b296dde775
-entryCSN: 20130919065345.774000Z#000001#000#000000
-entryParentId: 11ad318b-9830-4742-b875-e12d9975c19d
-createTimestamp: 20130919065353.537Z
+entryUUID: b1098fa4-6a42-40b9-bc06-73e1de070d66
+m-fqcn: org.apache.directory.api.ldap.model.schema.normalizers.NoOpNormalizer
+entryParentId: 6f6c0452-7f39-449b-920a-16f6eb9ae2a9

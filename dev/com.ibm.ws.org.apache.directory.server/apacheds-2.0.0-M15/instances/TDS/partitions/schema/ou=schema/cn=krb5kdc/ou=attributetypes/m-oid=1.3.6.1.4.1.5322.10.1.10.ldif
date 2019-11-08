@@ -1,19 +1,19 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.5322.10.1.10,ou=attributeTypes,cn=krb5kdc,ou=schema
+entryCSN: 20191031184642.574000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.5
+m-singlevalue: FALSE
+entryUUID: 191f6dd9-fa53-4cdc-8e0f-e2137149404b
+m-description: Encoded ASN1 Key as an octet string
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.5322.10.1.10
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.5
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 1.3.6.1.4.1.5322.10.1.10
+createTimestamp: 20191031184644.607Z
 m-name: krb5Key
-m-description: Encoded ASN1 Key as an octet string
-m-obsolete: FALSE
-entryUUID: 57893d03-5dd3-460a-906f-323ba06e5ef0
-entryCSN: 20130919065345.360000Z#000000#000#000000
-entryParentId: 52cbd356-2b5a-4388-af5f-f79468a822b0
-createTimestamp: 20130919065353.316Z
+entryParentId: 4d74a519-cc12-41f4-b022-d816d044c852

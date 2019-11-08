@@ -1,10 +1,10 @@
 version: 1
 dn: ou=objectClasses,cn=corba,ou=schema
+entryCSN: 20191031184642.179000Z#000000#000#000000
+ou: objectclasses
 objectclass: organizationalUnit
 objectclass: top
+createTimestamp: 20191031184650.639Z
 creatorsname: uid=admin,ou=system
-entryUUID: 637bbb3d-0f67-40e5-a2dd-2fc089a1d295
-entryCSN: 20130919065345.015000Z#000001#000#000000
-entryParentId: 279976bd-d621-4acf-bf11-c812da7ba7f2
-ou: objectclasses
-createTimestamp: 20130919065354.062Z
+entryUUID: c1a63ce2-f2ab-4436-b51b-ad579a50960c
+entryParentId: 91f9e9c6-ebfd-4bf9-a50a-0b924d6be089

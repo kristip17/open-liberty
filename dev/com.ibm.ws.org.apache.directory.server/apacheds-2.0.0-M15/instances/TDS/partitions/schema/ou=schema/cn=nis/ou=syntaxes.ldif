@@ -1,10 +1,10 @@
 version: 1
 dn: ou=syntaxes,cn=nis,ou=schema
+entryCSN: 20191031184642.635000Z#000001#000#000000
+ou: syntaxes
 objectclass: organizationalUnit
 objectclass: top
+createTimestamp: 20191031184647.459Z
 creatorsname: uid=admin,ou=system
-entryUUID: 291a5e70-a407-4931-acdb-c5f48d133b13
-entryCSN: 20130919065345.417000Z#000002#000#000000
-entryParentId: 847ae40b-db40-407e-832e-a4438d3b5bea
-ou: syntaxes
-createTimestamp: 20130919065351.243Z
+entryUUID: 9a570e04-2f27-473d-ba0c-3838012d5c9c
+entryParentId: 8476af2e-898b-4442-ae4b-923d9806fc9e

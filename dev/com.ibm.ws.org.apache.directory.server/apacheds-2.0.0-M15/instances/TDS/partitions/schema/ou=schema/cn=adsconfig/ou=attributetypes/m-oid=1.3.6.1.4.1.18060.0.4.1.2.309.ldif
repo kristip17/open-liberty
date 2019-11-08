@@ -1,16 +1,16 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.309,ou=attributeTypes,cn=adsconfig,ou=schema
+entryCSN: 20191031184641.586000Z#000000#000#000000
+creatorsname: uid=admin,ou=system
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.40
+entryUUID: 7e6b0678-5c2a-438d-a51f-ae48481e9656
 m-supattributetype: userPassword
 m-equality: octetStringMatch
+m-description: The certificate passord
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.309
 objectclass: metaTop
 objectclass: metaAttributeType
 objectclass: top
-creatorsname: uid=admin,ou=system
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.40
-m-oid: 1.3.6.1.4.1.18060.0.4.1.2.309
+createTimestamp: 20191031184649.501Z
 m-name: ads-certificatePassword
-m-description: The certificate passord
-entryUUID: fd649a1d-5a73-4496-8a68-39a3395ccc67
-entryCSN: 20130919065344.628000Z#000000#000#000000
-entryParentId: 1794946d-6c63-4ad5-9a2f-b4badd22d42f
-createTimestamp: 20130919065353.359Z
+entryParentId: c03ad512-4172-4443-b130-8ea59850a4d8

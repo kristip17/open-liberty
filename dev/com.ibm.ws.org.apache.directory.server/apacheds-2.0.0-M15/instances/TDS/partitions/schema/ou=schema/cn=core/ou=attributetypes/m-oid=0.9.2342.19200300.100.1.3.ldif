@@ -1,22 +1,22 @@
 version: 1
 dn: m-oid=0.9.2342.19200300.100.1.3,ou=attributeTypes,cn=core,ou=schema
+entryCSN: 20191031184642.211000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
+m-singlevalue: FALSE
+entryUUID: 8d9e28a5-6e6a-4db5-a6c6-f7ec91209e83
+m-substr: caseIgnoreIA5SubstringsMatch
+m-equality: caseIgnoreIA5Match
+m-description: RFC1274: RFC822 Mailbox
+m-obsolete: FALSE
+m-oid: 0.9.2342.19200300.100.1.3
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreIA5Match
-m-substr: caseIgnoreIA5SubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 0.9.2342.19200300.100.1.3
+createTimestamp: 20191031184652.024Z
 m-name: mail
 m-name: rfc822Mailbox
-m-description: RFC1274: RFC822 Mailbox
-m-obsolete: FALSE
-entryUUID: b6f926fd-f188-407d-a759-e7d12e27d9af
-entryCSN: 20130919065345.035000Z#000000#000#000000
-entryParentId: 3738e923-39ad-428e-8f85-8e5ec1c49c21
-createTimestamp: 20130919065351.737Z
+entryParentId: 56b846d6-cb3d-4f01-bb0c-2d7d7258e28c

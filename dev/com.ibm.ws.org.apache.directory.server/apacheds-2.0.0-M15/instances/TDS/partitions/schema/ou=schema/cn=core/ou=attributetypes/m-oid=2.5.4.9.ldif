@@ -1,22 +1,22 @@
 version: 1
 dn: m-oid=2.5.4.9,ou=attributeTypes,cn=core,ou=schema
+entryCSN: 20191031184642.265000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singlevalue: FALSE
+entryUUID: 3448f1b6-9053-44c2-af7a-dc432bbb42ed
+m-substr: caseIgnoreSubstringsMatch
+m-equality: caseIgnoreMatch
+m-description: RFC2256: street address of this object
+m-obsolete: FALSE
+m-oid: 2.5.4.9
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreMatch
-m-substr: caseIgnoreSubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 2.5.4.9
+createTimestamp: 20191031184648.529Z
 m-name: street
 m-name: streetAddress
-m-description: RFC2256: street address of this object
-m-obsolete: FALSE
-entryUUID: 618cc385-159a-40a0-ae8e-fb4ce648bea6
-entryCSN: 20130919065345.058000Z#000001#000#000000
-entryParentId: 3738e923-39ad-428e-8f85-8e5ec1c49c21
-createTimestamp: 20130919065352.824Z
+entryParentId: 56b846d6-cb3d-4f01-bb0c-2d7d7258e28c

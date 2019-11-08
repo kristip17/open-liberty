@@ -1,19 +1,19 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.0.3.11,ou=objectClasses,cn=apachemeta,ou=schema
+entryCSN: 20191031184642.109000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
-objectclass: top
-objectclass: metaTop
-objectclass: metaObjectClass
-m-oid: 1.3.6.1.4.1.18060.0.4.0.3.11
-m-name: metaSchema
-m-description: A schema object under which meta schema definitions are found
-m-obsolete: FALSE
-m-supobjectclass: top
-m-must: cn
-entryUUID: 174f9ee3-8100-4d84-8df8-87989fb0e6e6
+entryUUID: ed7b464e-25e2-477e-a076-81d1bfcb673f
 m-may: m-disabled
 m-may: m-dependencies
 m-typeobjectclass: STRUCTURAL
-entryCSN: 20130919065344.949000Z#000001#000#000000
-entryParentId: fbbee4f6-643a-4d8e-b3a6-eec7ba039cb1
-createTimestamp: 20130919065352.968Z
+m-supobjectclass: top
+m-must: cn
+m-description: A schema object under which meta schema definitions are found
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.18060.0.4.0.3.11
+objectclass: top
+objectclass: metaTop
+objectclass: metaObjectClass
+createTimestamp: 20191031184647.405Z
+m-name: metaSchema
+entryParentId: 42d95e59-0e78-4c40-8947-9e1b837114e2

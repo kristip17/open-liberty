@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=2.16.840.1.113730.3.1.34,ou=attributeTypes,cn=system,ou=schema
+entryCSN: 20191031184642.926000Z#000001#000#000000
+m-usage: DISTRIBUTED_OPERATION
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singlevalue: FALSE
+entryUUID: fc91a3f7-e6c2-43ff-8981-5c93159763a9
+m-equality: caseExactMatch
+m-description: RFC3296: named reference - a labeledURI
+m-obsolete: FALSE
+m-oid: 2.16.840.1.113730.3.1.34
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseExactMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: DISTRIBUTED_OPERATION
-m-oid: 2.16.840.1.113730.3.1.34
+createTimestamp: 20191031184648.110Z
 m-name: ref
-m-description: namedref: subordinate referral URL
-m-obsolete: FALSE
-entryUUID: c37a5ecc-4596-4199-8c3c-2d5e1cae1a4c
-entryCSN: 20130919065345.650000Z#000000#000#000000
-entryParentId: 8d7781fa-8bd8-4ab1-8c8c-ae6a13d0b74a
-createTimestamp: 20130919065352.836Z
+entryParentId: 5398fda0-231a-4598-9b49-d0d069167437

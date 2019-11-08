@@ -1,0 +1,17 @@
+version: 1
+dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.132.1,ou=attributeTypes,cn=adsconfig,ou=sche
+ ma
+entryCSN: 20191031184641.526000Z#000000#000#000000
+creatorsname: uid=admin,ou=system
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.38
+m-singlevalue: FALSE
+entryUUID: 6269136d-6ce2-4d82-a4c3-8f3481064735
+m-equality: objectIdentifierMatch
+m-description: An OID of an attributeType that should be hashed
+objectclass: top
+objectclass: metaTop
+objectclass: metaAttributeType
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.132.1
+createTimestamp: 20191031184650.543Z
+m-name: ads-hashAttribute
+entryParentId: c03ad512-4172-4443-b130-8ea59850a4d8

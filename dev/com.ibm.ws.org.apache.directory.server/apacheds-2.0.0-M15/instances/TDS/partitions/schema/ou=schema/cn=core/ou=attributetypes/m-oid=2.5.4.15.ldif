@@ -1,21 +1,21 @@
 version: 1
 dn: m-oid=2.5.4.15,ou=attributeTypes,cn=core,ou=schema
+entryCSN: 20191031184642.223000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singlevalue: FALSE
+entryUUID: 6d39ab01-b7a8-4f0d-9fe6-2d9b04b231ba
+m-substr: caseIgnoreSubstringsMatch
+m-equality: caseIgnoreMatch
+m-description: RFC2256: business category
+m-obsolete: FALSE
+m-oid: 2.5.4.15
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreMatch
-m-substr: caseIgnoreSubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 2.5.4.15
+createTimestamp: 20191031184650.809Z
 m-name: businessCategory
-m-description: RFC2256: business category
-m-obsolete: FALSE
-entryUUID: af0585af-327d-4828-b498-bcdd86835809
-entryCSN: 20130919065345.039000Z#000000#000#000000
-entryParentId: 3738e923-39ad-428e-8f85-8e5ec1c49c21
-createTimestamp: 20130919065353.523Z
+entryParentId: 56b846d6-cb3d-4f01-bb0c-2d7d7258e28c

@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=2.5.4.23,ou=attributeTypes,cn=core,ou=schema
+entryCSN: 20191031184642.234000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.22
+m-singlevalue: FALSE
+entryUUID: 8a7c9ab8-4dde-40d1-99de-db9bd4c8e69b
+m-description: RFC2256: Facsimile (Fax) Telephone Number
+m-obsolete: FALSE
+m-oid: 2.5.4.23
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.22
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 2.5.4.23
+createTimestamp: 20191031184650.582Z
 m-name: facsimileTelephoneNumber
 m-name: fax
-m-description: RFC2256: Facsimile (Fax) Telephone Number
-m-obsolete: FALSE
-entryUUID: 7d9aaf9b-3037-43b0-aed4-1bac60bbb925
-entryCSN: 20130919065345.043000Z#000001#000#000000
-entryParentId: 3738e923-39ad-428e-8f85-8e5ec1c49c21
-createTimestamp: 20130919065354.027Z
+entryParentId: 56b846d6-cb3d-4f01-bb0c-2d7d7258e28c

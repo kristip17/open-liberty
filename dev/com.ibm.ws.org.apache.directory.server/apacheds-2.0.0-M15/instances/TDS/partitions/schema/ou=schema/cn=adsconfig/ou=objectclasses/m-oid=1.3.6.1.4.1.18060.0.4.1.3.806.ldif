@@ -1,12 +1,12 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.3.806,ou=objectClasses,cn=adsconfig,ou=schema
-objectclass: top
-objectclass: metaTop
-objectclass: metaObjectClass
+entryCSN: 20191031184641.790000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
-m-oid: 1.3.6.1.4.1.18060.0.4.1.3.806
-m-name: ads-replConsumer
-m-description: replication consumer configuration
+entryUUID: ea824a25-1865-4b1a-a6cf-47b0d0a19533
+m-may: ads-replUseTls
+m-may: ads-replStrictCertValidation
+m-may: ads-replConsumerImpl
+m-may: ads-replCookie
 m-supobjectclass: ads-base
 m-must: ads-replConsumerId
 m-must: ads-searchBaseDN
@@ -22,11 +22,11 @@ m-must: ads-replSearchSizeLimit
 m-must: ads-replSearchTimeOut
 m-must: ads-replUserDn
 m-must: ads-replUserPassword
-entryUUID: 0d800434-e87c-4223-8e9e-692ae7dd3a53
-m-may: ads-replUseTls
-m-may: ads-replStrictCertValidation
-m-may: ads-replConsumerImpl
-m-may: ads-replCookie
-entryCSN: 20130919065344.744000Z#000001#000#000000
-entryParentId: 87769cc1-b86e-404a-8d67-bcb407eabaf2
-createTimestamp: 20130919065353.085Z
+m-description: replication consumer configuration
+m-oid: 1.3.6.1.4.1.18060.0.4.1.3.806
+objectclass: top
+objectclass: metaTop
+objectclass: metaObjectClass
+createTimestamp: 20191031184645.279Z
+m-name: ads-replConsumer
+entryParentId: 87320f3f-9f18-47e0-a467-9094c339cc8f

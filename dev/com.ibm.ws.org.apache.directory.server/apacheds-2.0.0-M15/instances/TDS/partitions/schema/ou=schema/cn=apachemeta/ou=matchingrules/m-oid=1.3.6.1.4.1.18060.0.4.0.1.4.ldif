@@ -1,15 +1,15 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.0.1.4,ou=matchingRules,cn=apachemeta,ou=schema
+entryCSN: 20191031184642.099000Z#000001#000#000000
+m-description: Rule identifier of this DIT structure rule
+m-obsolete: FALSE
 m-oid: 1.3.6.1.4.1.18060.0.4.0.1.4
-creatorsname: uid=admin,ou=system
 objectclass: metaMatchingRule
 objectclass: metaTop
 objectclass: top
+createTimestamp: 20191031184646.619Z
 m-name: ruleIdMatch
-m-description: Rule identifier of this DIT structure rule
-m-obsolete: FALSE
+creatorsname: uid=admin,ou=system
 m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
-entryUUID: f984f173-52be-4c15-9f5d-c78f206f94c8
-entryCSN: 20130919065344.944000Z#000001#000#000000
-entryParentId: 349a1459-2ed4-4338-a303-a2ab6c687de4
-createTimestamp: 20130919065351.308Z
+entryUUID: a88f8ad3-0e83-41bb-acae-154c7b6c0c6a
+entryParentId: 97d4b611-982c-42cf-9074-7b10145ce964

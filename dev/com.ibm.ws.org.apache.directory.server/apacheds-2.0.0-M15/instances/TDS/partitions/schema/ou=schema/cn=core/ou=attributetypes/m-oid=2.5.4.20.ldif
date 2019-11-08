@@ -1,21 +1,21 @@
 version: 1
 dn: m-oid=2.5.4.20,ou=attributeTypes,cn=core,ou=schema
+entryCSN: 20191031184642.228000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.50
+m-singlevalue: FALSE
+entryUUID: b9ff0490-23f9-4fbd-a0a6-32721a364038
+m-substr: telephoneNumberSubstringsMatch
+m-equality: telephoneNumberMatch
+m-description: RFC2256: Telephone Number
+m-obsolete: FALSE
+m-oid: 2.5.4.20
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: telephoneNumberMatch
-m-substr: telephoneNumberSubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.50
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 2.5.4.20
+createTimestamp: 20191031184649.522Z
 m-name: telephoneNumber
-m-description: RFC2256: Telephone Number
-m-obsolete: FALSE
-entryUUID: 6b769d64-d4ed-4032-a339-3a50f867fade
-entryCSN: 20130919065345.041000Z#000001#000#000000
-entryParentId: 3738e923-39ad-428e-8f85-8e5ec1c49c21
-createTimestamp: 20130919065354.019Z
+entryParentId: 56b846d6-cb3d-4f01-bb0c-2d7d7258e28c

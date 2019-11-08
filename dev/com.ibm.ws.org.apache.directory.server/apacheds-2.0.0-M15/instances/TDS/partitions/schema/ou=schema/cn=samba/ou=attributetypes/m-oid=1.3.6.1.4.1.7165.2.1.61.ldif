@@ -1,21 +1,21 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.7165.2.1.61,ou=attributeTypes,cn=samba,ou=schema
+entryCSN: 20191031184642.842000Z#000001#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
-objectclass: top
-objectclass: metaTop
-objectclass: metaAttributeType
-m-equality: integerMatch
+m-nousermodification: FALSE
 m-syntax: 1.3.6.1.4.1.1466.115.121.1.27
 m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 1.3.6.1.4.1.7165.2.1.61
-m-name: sambaMaxPwdAge
+entryUUID: e6e303f6-be14-49b3-8040-471dbb880fec
+m-equality: integerMatch
 m-description: Maximum password age, in seconds (default: -1 => never expire pas
  swords)
 m-obsolete: FALSE
-entryUUID: 75232432-5bcf-4e44-af4b-c5e9187159eb
-entryCSN: 20130919065345.586000Z#000000#000#000000
-entryParentId: ad480692-fbdc-43ac-a835-b4dd7e42d307
-createTimestamp: 20130919065352.606Z
+m-oid: 1.3.6.1.4.1.7165.2.1.61
+objectclass: top
+objectclass: metaTop
+objectclass: metaAttributeType
+createTimestamp: 20191031184645.679Z
+m-name: sambaMaxPwdAge
+entryParentId: f7bc1ebe-8f92-49a2-87fc-bf561fbcbb62

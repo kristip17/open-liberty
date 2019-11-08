@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=2.16.840.1.113719.1.203.4.34,ou=attributeTypes,cn=dhcp,ou=schema
+entryCSN: 20191031184642.438000Z#000001#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.40
+m-singlevalue: TRUE
+entryUUID: 8a8c435f-b12f-48d6-b262-b71efc6e8447
+m-equality: caseIgnoreIA5Match
+m-description: The clients hardware address that requested this IP address.
+m-obsolete: FALSE
+m-oid: 2.16.840.1.113719.1.203.4.34
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: caseIgnoreIA5Match
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.40
-m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 2.16.840.1.113719.1.203.4.34
+createTimestamp: 20191031184647.069Z
 m-name: dhcpHWAddress
-m-description: The clients hardware address that requested this IP address.
-m-obsolete: FALSE
-entryUUID: c7b69dd6-3e5b-4ea9-b04b-cdad21bb9a98
-entryCSN: 20130919065345.241000Z#000000#000#000000
-entryParentId: 920d556c-6037-40c6-8766-5417ea615dab
-createTimestamp: 20130919065353.939Z
+entryParentId: 6454e12e-b004-411a-b5e7-6053eeffa49e

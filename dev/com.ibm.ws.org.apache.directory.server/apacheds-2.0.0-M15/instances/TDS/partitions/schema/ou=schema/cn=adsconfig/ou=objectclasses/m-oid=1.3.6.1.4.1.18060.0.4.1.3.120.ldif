@@ -1,16 +1,16 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.3.120,ou=objectClasses,cn=adsconfig,ou=schema
+entryCSN: 20191031184641.761000Z#000000#000#000000
+m-supobjectclass: ads-base
+m-must: ads-changeLogExposed
+m-must: ads-changeLogId
+m-description: The ChangeLog
 m-oid: 1.3.6.1.4.1.18060.0.4.1.3.120
-creatorsname: uid=admin,ou=system
 objectclass: top
 objectclass: metaTop
 objectclass: metaObjectClass
+createTimestamp: 20191031184649.793Z
 m-name: ads-changeLog
-m-description: The ChangeLog
-m-supobjectclass: ads-base
-entryUUID: 768b4f6e-a1f8-4db3-baa3-366ba7cdfa6e
-m-must: ads-changeLogExposed
-m-must: ads-changeLogId
-entryCSN: 20130919065344.730000Z#000001#000#000000
-entryParentId: 87769cc1-b86e-404a-8d67-bcb407eabaf2
-createTimestamp: 20130919065352.196Z
+creatorsname: uid=admin,ou=system
+entryUUID: 0fe06036-18f9-4b9a-9054-72ae667652f6
+entryParentId: 87320f3f-9f18-47e0-a467-9094c339cc8f

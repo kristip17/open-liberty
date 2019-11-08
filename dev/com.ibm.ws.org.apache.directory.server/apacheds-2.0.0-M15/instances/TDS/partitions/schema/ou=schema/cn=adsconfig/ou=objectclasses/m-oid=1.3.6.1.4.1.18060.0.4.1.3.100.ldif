@@ -1,12 +1,9 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.3.100,ou=objectClasses,cn=adsconfig,ou=schema
-objectclass: top
-objectclass: metaTop
-objectclass: metaObjectClass
+entryCSN: 20191031184641.760000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
-m-oid: 1.3.6.1.4.1.18060.0.4.1.3.100
-m-name: ads-directoryService
-m-description: The DirectoryService ObjectClass
+entryUUID: 7f34b1b7-7b94-4f50-84b6-3d194eac0abc
+m-may: ads-dsTestEntries
 m-supobjectclass: ads-base
 m-must: ads-directoryServiceId
 m-must: ads-dsReplicaId
@@ -15,8 +12,11 @@ m-must: ads-dsAllowAnonymousAccess
 m-must: ads-dsDenormalizeOpAttrsEnabled
 m-must: ads-dsPasswordHidden
 m-must: ads-dsSyncPeriodMillis
-entryUUID: d815fc50-b40d-48fb-8a46-83e42b53fdc4
-m-may: ads-dsTestEntries
-entryCSN: 20130919065344.730000Z#000000#000#000000
-entryParentId: 87769cc1-b86e-404a-8d67-bcb407eabaf2
-createTimestamp: 20130919065351.286Z
+m-description: The DirectoryService ObjectClass
+m-oid: 1.3.6.1.4.1.18060.0.4.1.3.100
+objectclass: top
+objectclass: metaTop
+objectclass: metaObjectClass
+createTimestamp: 20191031184651.643Z
+m-name: ads-directoryService
+entryParentId: 87320f3f-9f18-47e0-a467-9094c339cc8f

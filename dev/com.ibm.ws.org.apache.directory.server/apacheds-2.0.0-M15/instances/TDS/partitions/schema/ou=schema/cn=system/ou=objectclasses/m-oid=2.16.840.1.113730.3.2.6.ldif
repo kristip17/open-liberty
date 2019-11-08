@@ -1,17 +1,17 @@
 version: 1
 dn: m-oid=2.16.840.1.113730.3.2.6,ou=objectClasses,cn=system,ou=schema
+entryCSN: 20191031184643.035000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
+entryUUID: 3f1fae3d-68a7-4328-87ad-f418d96c6a4b
+m-typeobjectclass: STRUCTURAL
+m-supobjectclass: top
+m-must: ref
+m-description: namedref: named subordinate referral
+m-obsolete: FALSE
+m-oid: 2.16.840.1.113730.3.2.6
 objectclass: metaObjectClass
 objectclass: metaTop
 objectclass: top
-m-oid: 2.16.840.1.113730.3.2.6
+createTimestamp: 20191031184645.833Z
 m-name: referral
-m-description: namedref: named subordinate referral
-m-obsolete: FALSE
-m-supobjectclass: top
-m-must: ref
-entryUUID: a4c6fbdd-235e-4439-b7b6-fe381a0d759e
-m-typeobjectclass: STRUCTURAL
-entryCSN: 20130919065345.784000Z#000001#000#000000
-entryParentId: fbc24da0-4c4b-4bfa-abf4-479faf22dcb7
-createTimestamp: 20130919065353.977Z
+entryParentId: b5e1de29-8816-4182-8e91-539248d2c1ed

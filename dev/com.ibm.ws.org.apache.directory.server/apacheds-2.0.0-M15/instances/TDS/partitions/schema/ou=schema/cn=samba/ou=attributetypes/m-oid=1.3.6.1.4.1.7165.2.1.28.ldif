@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.7165.2.1.28,ou=attributeTypes,cn=samba,ou=schema
+entryCSN: 20191031184642.814000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.27
+m-singlevalue: TRUE
+entryUUID: 6b5b8561-cd47-46c5-83e2-3c0549e7d2af
+m-equality: integerMatch
+m-description: Timestamp of when the user is allowed to update the password
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.7165.2.1.28
 objectclass: top
 objectclass: metaTop
 objectclass: metaAttributeType
-m-equality: integerMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.27
-m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 1.3.6.1.4.1.7165.2.1.28
+createTimestamp: 20191031184644.740Z
 m-name: sambaPwdCanChange
-m-description: Timestamp of when the user is allowed to update the password
-m-obsolete: FALSE
-entryUUID: 5e5001b7-949c-4f23-8339-a6d66e3a6422
-entryCSN: 20130919065345.571000Z#000000#000#000000
-entryParentId: ad480692-fbdc-43ac-a835-b4dd7e42d307
-createTimestamp: 20130919065352.129Z
+entryParentId: f7bc1ebe-8f92-49a2-87fc-bf561fbcbb62

@@ -1,17 +1,17 @@
 version: 1
 dn: m-oid=2.5.6.1,ou=objectClasses,cn=system,ou=schema
+entryCSN: 20191031184643.038000Z#000001#000#000000
 creatorsname: uid=admin,ou=system
+entryUUID: 4ba647b1-2ff1-479b-913b-97854cbde72e
+m-typeobjectclass: STRUCTURAL
+m-supobjectclass: top
+m-must: aliasedObjectName
+m-description: RFC2256: an alias
+m-obsolete: FALSE
+m-oid: 2.5.6.1
 objectclass: metaObjectClass
 objectclass: metaTop
 objectclass: top
-m-oid: 2.5.6.1
+createTimestamp: 20191031184648.884Z
 m-name: alias
-m-description: RFC2256: an alias
-m-obsolete: FALSE
-m-supobjectclass: top
-m-must: aliasedObjectName
-entryUUID: 2f8542a7-2a62-4390-8fbb-311f27e14d65
-m-typeobjectclass: STRUCTURAL
-entryCSN: 20130919065345.786000Z#000002#000#000000
-entryParentId: fbc24da0-4c4b-4bfa-abf4-479faf22dcb7
-createTimestamp: 20130919065353.962Z
+entryParentId: b5e1de29-8816-4182-8e91-539248d2c1ed

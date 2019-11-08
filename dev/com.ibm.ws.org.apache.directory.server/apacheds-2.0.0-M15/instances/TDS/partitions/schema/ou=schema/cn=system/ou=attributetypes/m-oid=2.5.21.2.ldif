@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=2.5.21.2,ou=attributeTypes,cn=system,ou=schema
+entryCSN: 20191031184642.938000Z#000000#000#000000
+m-usage: DIRECTORY_OPERATION
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.16
+m-singlevalue: FALSE
+entryUUID: 0a6b906f-53c0-47cb-af7f-e3879b0b20fe
+m-equality: objectIdentifierFirstComponentMatch
+m-description: RFC2252: DIT content rules
+m-obsolete: FALSE
+m-oid: 2.5.21.2
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: objectIdentifierFirstComponentMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.16
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: DIRECTORY_OPERATION
-m-oid: 2.5.21.2
+createTimestamp: 20191031184644.515Z
 m-name: dITContentRules
-m-description: RFC2252: DIT content rules
-m-obsolete: FALSE
-entryUUID: 3eced6d3-4127-49e4-a818-d71cafcb0f74
-entryCSN: 20130919065345.656000Z#000000#000#000000
-entryParentId: 8d7781fa-8bd8-4ab1-8c8c-ae6a13d0b74a
-createTimestamp: 20130919065352.007Z
+entryParentId: 5398fda0-231a-4598-9b49-d0d069167437

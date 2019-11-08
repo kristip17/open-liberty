@@ -1,20 +1,20 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.7165.2.1.35,ou=attributeTypes,cn=samba,ou=schema
+entryCSN: 20191031184642.821000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
+m-collective: FALSE
 creatorsname: uid=admin,ou=system
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singlevalue: TRUE
+entryUUID: 3cea7340-424c-4127-9221-2298c8e9e9b9
+m-equality: caseIgnoreMatch
+m-description: Roaming profile path
+m-obsolete: FALSE
+m-oid: 1.3.6.1.4.1.7165.2.1.35
 objectclass: top
 objectclass: metaTop
 objectclass: metaAttributeType
-m-equality: caseIgnoreMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
-m-singlevalue: TRUE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 1.3.6.1.4.1.7165.2.1.35
+createTimestamp: 20191031184651.184Z
 m-name: sambaProfilePath
-m-description: Roaming profile path
-m-obsolete: FALSE
-entryUUID: 4bb59645-cd4f-4c2e-9771-f1f780211ae9
-entryCSN: 20130919065345.574000Z#000000#000#000000
-entryParentId: ad480692-fbdc-43ac-a835-b4dd7e42d307
-createTimestamp: 20130919065353.777Z
+entryParentId: f7bc1ebe-8f92-49a2-87fc-bf561fbcbb62

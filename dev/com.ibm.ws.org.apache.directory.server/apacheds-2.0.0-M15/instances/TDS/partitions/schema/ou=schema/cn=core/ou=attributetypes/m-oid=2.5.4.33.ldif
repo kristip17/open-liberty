@@ -1,21 +1,21 @@
 version: 1
 dn: m-oid=2.5.4.33,ou=attributeTypes,cn=core,ou=schema
-m-supattributetype: distinguishedName
+entryCSN: 20191031184642.243000Z#000000#000#000000
+m-usage: USER_APPLICATIONS
 creatorsname: uid=admin,ou=system
+m-collective: FALSE
+m-nousermodification: FALSE
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.12
+m-singlevalue: FALSE
+entryUUID: 1ccb5cea-8124-4953-b194-a8da637e8c97
+m-supattributetype: distinguishedName
+m-equality: distinguishedNameMatch
+m-description: RFC2256: occupant of role
+m-obsolete: FALSE
+m-oid: 2.5.4.33
 objectclass: metaAttributeType
 objectclass: metaTop
 objectclass: top
-m-equality: distinguishedNameMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.12
-m-singlevalue: FALSE
-m-collective: FALSE
-m-nousermodification: FALSE
-m-usage: USER_APPLICATIONS
-m-oid: 2.5.4.33
+createTimestamp: 20191031184645.429Z
 m-name: roleOccupant
-m-description: RFC2256: occupant of role
-m-obsolete: FALSE
-entryUUID: 243b2a01-981e-4154-9ee6-11a9ee1f8624
-entryCSN: 20130919065345.048000Z#000000#000#000000
-entryParentId: 3738e923-39ad-428e-8f85-8e5ec1c49c21
-createTimestamp: 20130919065354.014Z
+entryParentId: 56b846d6-cb3d-4f01-bb0c-2d7d7258e28c

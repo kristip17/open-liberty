@@ -1,17 +1,17 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.404,ou=attributeTypes,cn=adsconfig,ou=schema
+entryCSN: 20191031184641.598000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
+m-length: 0
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.7
+m-singlevalue: TRUE
+entryUUID: 78c83045-1d0a-4162-bc53-c8d2ef873d07
+m-equality: booleanMatch
+m-description: Whether pre-authentication by encrypted timestamp is required
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.404
 objectclass: metaTop
 objectclass: metaAttributeType
 objectclass: top
-m-equality: booleanMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.7
-m-singlevalue: TRUE
-m-length: 0
-m-oid: 1.3.6.1.4.1.18060.0.4.1.2.404
+createTimestamp: 20191031184648.519Z
 m-name: ads-krbPaEncTimestampRequired
-m-description: Whether pre-authentication by encrypted timestamp is required
-entryUUID: e2b64c55-1ea2-4149-817e-b0751de19808
-entryCSN: 20130919065344.640000Z#000000#000#000000
-entryParentId: 1794946d-6c63-4ad5-9a2f-b4badd22d42f
-createTimestamp: 20130919065354.059Z
+entryParentId: c03ad512-4172-4443-b130-8ea59850a4d8

@@ -1,0 +1,15 @@
+version: 1
+dn: m-oid=2.5.13.39,ou=matchingRules,cn=core,ou=schema
+entryCSN: 20191031184642.276000Z#000001#000#000000
+m-description: X.509 Certificate List Match
+m-obsolete: FALSE
+objectclass: top
+objectclass: metaTop
+objectclass: metaMatchingRule
+m-oid: 2.5.13.39
+createTimestamp: 20191031184647.680Z
+m-name: certificateListMatch
+creatorsname: uid=admin,ou=system
+m-syntax: 1.3.6.1.1.15.6
+entryUUID: 0d99552c-a5ee-44e4-a8e1-945849eac677
+entryParentId: d8d3ca4f-c822-4683-8d18-17e8fb32df80

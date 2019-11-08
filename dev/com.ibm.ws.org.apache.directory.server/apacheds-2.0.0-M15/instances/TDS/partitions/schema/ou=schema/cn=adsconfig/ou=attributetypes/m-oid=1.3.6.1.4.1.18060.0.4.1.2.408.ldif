@@ -1,19 +1,19 @@
 version: 1
 dn: m-oid=1.3.6.1.4.1.18060.0.4.1.2.408,ou=attributeTypes,cn=adsconfig,ou=schema
+entryCSN: 20191031184641.609000Z#000000#000#000000
 creatorsname: uid=admin,ou=system
+m-length: 0
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
+m-singlevalue: TRUE
+m-ordering: caseExactOrderingMatch
+entryUUID: 10aa01ad-8eb6-40d8-b2a6-3c1a481672c3
+m-substr: caseExactSubstringsMatch
+m-equality: caseExactMatch
+m-description: The service principal name
+m-oid: 1.3.6.1.4.1.18060.0.4.1.2.408
 objectclass: metaTop
 objectclass: metaAttributeType
 objectclass: top
-m-equality: caseExactMatch
-m-ordering: caseExactOrderingMatch
-m-substr: caseExactSubstringsMatch
-m-syntax: 1.3.6.1.4.1.1466.115.121.1.26
-m-singlevalue: TRUE
-m-length: 0
-m-oid: 1.3.6.1.4.1.18060.0.4.1.2.408
+createTimestamp: 20191031184645.250Z
 m-name: ads-krbKdcPrincipal
-m-description: The service principal name
-entryUUID: 71dc1775-4194-4252-bb0d-a9a544fcc0ea
-entryCSN: 20130919065344.645000Z#000000#000#000000
-entryParentId: 1794946d-6c63-4ad5-9a2f-b4badd22d42f
-createTimestamp: 20130919065352.863Z
+entryParentId: c03ad512-4172-4443-b130-8ea59850a4d8
