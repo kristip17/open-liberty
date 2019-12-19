@@ -145,6 +145,12 @@ public class LocalLdapServer {
         // Stop the ldap instance started.
         Log.info(c, method, "Stopping the " + instanceName + " instance of Apache DS");
         localLdapInstance.destroy();
+        try {
+            localLdapInstance.waitFor();
+        } catch (InterruptedException e) {
+
+        }
+        Log.info(c, method, "Stopped the " + instanceName + " instance of Apache DS");
         Log.exiting(c, method);
     }
 }

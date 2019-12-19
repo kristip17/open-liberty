@@ -37,6 +37,7 @@ import componenttest.custom.junit.runner.Mode;
 import componenttest.custom.junit.runner.Mode.TestMode;
 import componenttest.topology.impl.LibertyServer;
 import componenttest.topology.impl.LibertyServerFactory;
+import componenttest.topology.ldap.LocalLDAPServerSuite;
 import componenttest.topology.utils.LDAPUtils;
 
 @RunWith(FATRunner.class)
@@ -58,6 +59,7 @@ public class URAPIs_ADLDAP_SSLTest {
      */
     @BeforeClass
     public static void setUp() throws Exception {
+        LocalLDAPServerSuite.restartAD();
         // Add LDAP variables to bootstrap properties file
         LDAPUtils.addLDAPVariables(server);
         Log.info(c, "setUp", "Starting the server... (will wait for userRegistry servlet to start)");

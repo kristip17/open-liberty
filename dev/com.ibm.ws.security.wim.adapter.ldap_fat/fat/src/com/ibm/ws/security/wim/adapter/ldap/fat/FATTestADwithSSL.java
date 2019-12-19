@@ -36,6 +36,7 @@ import componenttest.custom.junit.runner.Mode;
 import componenttest.custom.junit.runner.Mode.TestMode;
 import componenttest.topology.impl.LibertyServer;
 import componenttest.topology.impl.LibertyServerFactory;
+import componenttest.topology.ldap.LocalLDAPServerSuite;
 import componenttest.topology.utils.LDAPUtils;
 import componenttest.vulnerability.LeakedPasswordChecker;
 
@@ -54,6 +55,7 @@ public class FATTestADwithSSL {
      */
     @BeforeClass
     public static void setUp() throws Exception {
+        LocalLDAPServerSuite.restartAD();
         LDAPUtils.addLDAPVariables(server);
         Log.info(c, "setUp", "Starting the server... (will wait for userRegistry servlet to start)");
         server.copyFileToLibertyInstallRoot("lib/features", "internalfeatures/securitylibertyinternals-1.0.mf");

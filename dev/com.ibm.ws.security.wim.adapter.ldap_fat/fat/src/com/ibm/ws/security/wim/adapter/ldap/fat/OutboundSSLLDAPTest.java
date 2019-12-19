@@ -31,6 +31,7 @@ import componenttest.custom.junit.runner.Mode;
 import componenttest.custom.junit.runner.Mode.TestMode;
 import componenttest.topology.impl.LibertyServer;
 import componenttest.topology.impl.LibertyServerFactory;
+import componenttest.topology.ldap.LocalLDAPServerSuite;
 import componenttest.topology.utils.LDAPUtils;
 
 @RunWith(FATRunner.class)
@@ -59,6 +60,7 @@ public class OutboundSSLLDAPTest {
      */
     @Before
     public void setUp() throws Exception {
+        LocalLDAPServerSuite.restartTDS();
         // Add LDAP variables to bootstrap properties file
         LDAPUtils.addLDAPVariables(myServer);
         Log.info(c, "setUp", "Starting the server... ");

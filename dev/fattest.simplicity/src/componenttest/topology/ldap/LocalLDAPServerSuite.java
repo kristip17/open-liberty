@@ -27,6 +27,7 @@ public class LocalLDAPServerSuite {
     static LocalLdapServer tdsInstance = new LocalLdapServer("TDS");
     static LocalLdapServer adInstance = new LocalLdapServer("AD");
     static LocalLdapServer sunoneInstance = new LocalLdapServer("SunOne");
+    static boolean localStarted = true;
 
     private static final String KEY_DELIMITER = ":";
     private static final int KEY_SEGMENT_HOSTNAME = 0;
@@ -108,9 +109,30 @@ public class LocalLDAPServerSuite {
         Log.exiting(c, method);
     }
 
+    public static void restartTDS() {
+        String method = "restartTDS";
+        if (!localStarted) {
+            return;
+        }
+        Log.entering(c, method);
+        Log.info(c, method, "Request to restart the in-memory TDS LDAP instance");
+
+        tdsInstance.stop();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+
+        }
+        tdsInstance.start();
+    }
+
     @AfterClass
     public static void tearDown() throws InterruptedException {
         String method = "tearDown";
+        if (!localStarted) {
+            return;
+        }
         Log.entering(c, method);
         // Stop the 3 ApacheDS instances started above
         if (LDAPUtils.USE_LOCAL_LDAP_SERVER && isInMemoryAllowed) {
@@ -122,10 +144,44 @@ public class LocalLDAPServerSuite {
         Log.exiting(c, method);
     }
 
+    public static void restartAD() {
+        String method = "restartAD";
+        if (!localStarted) {
+            return;
+        }
+        Log.entering(c, method);
+        Log.info(c, method, "Request to restart the in-memory AD LDAP instance");
+        adInstance.stop();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+
+        }
+        adInstance.start();
+    }
+
+    public static void restartSun() {
+        String method = "restartSun";
+        if (!localStarted) {
+            return;
+        }
+        Log.entering(c, method);
+        Log.info(c, method, "Request to restart the in-memory SunOne LDAP instance");
+        sunoneInstance.stop();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+
+        }
+        sunoneInstance.start();
+    }
+
     /**
      * Performs the usual setup, but only check the availability of the specified servers and failovers as needed.
      *
-     * @param servers
+     * @param  servers
      * @throws Exception
      */
     public static void setUpUsingServers(HashMap<String, ArrayList<String>> servers) throws Exception {
@@ -136,8 +192,8 @@ public class LocalLDAPServerSuite {
      * Performs the usual setup, but only check the availability of the specified servers and failovers as needed.
      * If {@code isInMemoryLdapAllowed} is false, no in-memory LDAP server instances will be started.
      *
-     * @param servers
-     * @param isInMemoryLdapAllowed
+     * @param  servers
+     * @param  isInMemoryLdapAllowed
      * @throws Exception
      */
     public static void setUpUsingServers(HashMap<String, ArrayList<String>> servers, boolean isInMemoryLdapAllowed) throws Exception {
@@ -148,8 +204,8 @@ public class LocalLDAPServerSuite {
      * Performs the usual setup, but only check the availability of the specified servers and failovers as needed.
      * If {@code isInMemoryLdapAllowed} is false, no in-memory LDAP server instances will be started.
      *
-     * @param servers
-     * @param isInMemoryLdapAllowed
+     * @param  servers
+     * @param  isInMemoryLdapAllowed
      * @throws Exception
      */
     public static void setUpUsingServers(HashMap<String, ArrayList<String>> servers, boolean isInMemoryLdapAllowed, boolean noPhysicalLDAPServerExceptionAllowed) throws Exception {
@@ -168,11 +224,11 @@ public class LocalLDAPServerSuite {
      * is already included in {@code existingServerMap}, the failover server specified will be added to the list of failovers for that
      * primary server. This method assumes that neither the primary nor the failover server requires SSL.
      *
-     * @param primaryHost
-     * @param primaryPort
-     * @param failoverHost
-     * @param failoverPort
-     * @param existingServerMap If {@code null}, a new server map will be created and returned by this method
+     * @param  primaryHost
+     * @param  primaryPort
+     * @param  failoverHost
+     * @param  failoverPort
+     * @param  existingServerMap If {@code null}, a new server map will be created and returned by this method
      * @return
      */
     public static HashMap<String, ArrayList<String>> addTestServer(String primaryHost, String primaryPort, String failoverHost, String failoverPort,
@@ -185,13 +241,13 @@ public class LocalLDAPServerSuite {
      * is already included in {@code existingServerMap}, the failover server specified will be added to the list of failovers for that
      * primary server.
      *
-     * @param primaryHost
-     * @param primaryPort
-     * @param primaryUseSsl
-     * @param failoverHost
-     * @param failoverPort
-     * @param failoverUseSsl
-     * @param existingServerMap If {@code null}, a new server map will be created and returned by this method
+     * @param  primaryHost
+     * @param  primaryPort
+     * @param  primaryUseSsl
+     * @param  failoverHost
+     * @param  failoverPort
+     * @param  failoverUseSsl
+     * @param  existingServerMap If {@code null}, a new server map will be created and returned by this method
      * @return
      */
     public static HashMap<String, ArrayList<String>> addTestServer(String primaryHost, String primaryPort, boolean primaryUseSsl, String primaryBindDn,
@@ -250,8 +306,8 @@ public class LocalLDAPServerSuite {
      * Check each of the failover servers specified for the given host and port and return true if there is an available
      * failover server.
      *
-     * @param host
-     * @param port
+     * @param  host
+     * @param  port
      * @return
      * @throws Exception
      */
