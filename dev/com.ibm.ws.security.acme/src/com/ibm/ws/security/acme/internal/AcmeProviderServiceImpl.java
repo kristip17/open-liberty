@@ -10,10 +10,12 @@
  *******************************************************************************/
 package com.ibm.ws.security.acme.internal;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
 
 import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletContext;
@@ -21,6 +23,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
 
+import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -45,7 +48,8 @@ import com.ibm.wsspi.kernel.service.utils.ConcurrentServiceReferenceMap;
  * ACME certificate management support.
  */
 @Component(service = { AcmeConfig.class, ServletContainerInitializer.class,
-		ServletContextListener.class }, immediate = true, configurationPolicy = ConfigurationPolicy.REQUIRE, configurationPid = AcmeConstants.ACME_PID, property = "service.vendor=IBM")
+		ServletContextListener.class,
+		AcmeProviderServiceImpl.class }, name = "com.ibm.ws.security.acme.internal.AcmeProviderServiceImpl", immediate = true, configurationPolicy = ConfigurationPolicy.REQUIRE, configurationPid = AcmeConstants.ACME_PID, property = "service.vendor=IBM")
 public class AcmeProviderServiceImpl implements AcmeConfig, ServletContextListener, ServletContainerInitializer {
 
     private final TraceComponent tc = Tr.register(AcmeProviderServiceImpl.class);
@@ -79,15 +83,63 @@ public class AcmeProviderServiceImpl implements AcmeConfig, ServletContextListen
 
     @Activate
     public void activate(ComponentContext context, Map<String, Object> properties) {
+		if (tc.isDebugEnabled()) {
+			Tr.debug(tc, "AcmeProviderServiceImpl entered activate() method!");
+		}
+
+		initialize(properties);
+
+		BundleContext bndcontext = context.getBundleContext();
+
+		ServiceReference<ExecutorService> executorRef = bndcontext.getServiceReference(ExecutorService.class);
+		ExecutorService executor = executorRef == null ? null : bndcontext.getService(executorRef);
+		if (executor == null) {
+			// This is unexpected that the executor service is not available by this point.
+			// To-Do -- should this be an error message? or thread sleep/retry?
+			if (tc.isDebugEnabled()) {
+				Tr.debug(tc, "Unable to get ExecutorService to launch Acme request");
+			}
+		} else {
+
+			final CSROptions options = new CSROptions(Arrays.asList(new String[] { domain }));
+
+			if (tc.isDebugEnabled()) {
+				Tr.debug(tc, "Start runnable to request certificate for domain " + domain);
+			}
+			executor.execute(new Runnable() {
+				@Override
+				public void run() {
+					if (tc.isDebugEnabled()) {
+						Tr.debug(tc, "Runnable requesting certificate for domain " + domain);
+					}
+
+					try {
+					/*
+					 * Get the certificate from the ACME CA server.
+					 */
+					AcmeCertificate newCertificate = acmeClient.fetchCertificate(options);
+
+						if (tc.isDebugEnabled()) {
+							Tr.debug(tc, "Certificate request returned for domain " + domain);
+						}
+
+					} catch (Exception e) {
+						// To-Do: Throw acme specific exception and/or log exception here
+						Tr.event(tc, "Exception calling fetchCertificate for domain " + domain, e);
+
+					}
+				}
+			});
+			bndcontext.ungetService(executorRef);
+		}
+	}
+
+	@Modified
+	public void modify(Map<String, Object> properties) {
 		initialize(properties);
     }
 
-    @Modified
-    public void modify(Map<String, Object> properties) {
-		initialize(properties);
-    }
-
-	public void initialize(Map<String, Object> configProps) {
+	private void initialize(Map<String, Object> configProps) {
 		directoryURI = (String) configProps.get(AcmeConstants.DIR_URI);
 		domain = (String) configProps.get(AcmeConstants.DOMAIN);
 		validFor = ((Integer) configProps.get(AcmeConstants.VALID_FOR)).intValue();
@@ -115,45 +167,51 @@ public class AcmeProviderServiceImpl implements AcmeConfig, ServletContextListen
 
 	}
 
-    @Deactivate
-    public void deactivate(ComponentContext context, int reason) {
+	@Deactivate
+	public void deactivate(ComponentContext context, int reason) {
+		Tr.debug(tc, " ******* JTM ******* AcmeProviderServiceImpl: inside deactivate() method");
     }
 
     /** {@inheritDoc} */
     @Override
     public void onStartup(java.util.Set<java.lang.Class<?>> c, ServletContext ctx) throws ServletException {
-    }
+		Tr.debug(tc, " ******* JTM ******* AcmeProviderServiceImpl: entered ServletContext onStartup() method");
+	}
 
     /** {@inheritDoc} */
     @Override
     public void contextDestroyed(ServletContextEvent cte) {
-        // AcmeProviderServiceImpl.moduleStopped(appmodname);
+		Tr.debug(tc,
+				"**** JTM **** AcmeProviderServiceImpl: entered ServletContextListener contextDestroyed() for application: "
+						+ cte.getServletContext().getServletContextName());
+		// AcmeProviderServiceImpl.moduleStopped(appmodname);
     }
 
     /** {@inheritDoc} */
     @Override
     public void contextInitialized(ServletContextEvent cte) {
-    }
+		Tr.debug(tc,
+				"******* JTM ******* AcmeProviderServiceImpl: entered ServletContextListener contextInitialized() for application: "
+						+ cte.getServletContext().getServletContextName());
+	}
 
-    private final ConcurrentServiceReferenceMap<String, AcmeAuthorizationServices> acmeAuthServiceRef = new ConcurrentServiceReferenceMap<String, AcmeAuthorizationServices>("acmeAuthService");
+	private final ConcurrentServiceReferenceMap<String, AcmeAuthorizationServices> acmeAuthServiceRef = new ConcurrentServiceReferenceMap<String, AcmeAuthorizationServices>(
+			"acmeAuthService");
 
-    @Reference(service = AcmeAuthorizationServices.class, name = "com.ibm.ws.security.acme.web.AcmeAuthorizationServices", policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE, policyOption = ReferencePolicyOption.GREEDY)
+	@Reference(service = AcmeAuthorizationServices.class, name = "com.ibm.ws.acme.web.AcmeAuthorizationServices", policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE, policyOption = ReferencePolicyOption.GREEDY)
+	protected void setAcmeAuthService(ServiceReference<AcmeAuthorizationServices> ref) {
+		synchronized (acmeAuthServiceRef) {
+			Tr.info(tc, "AcmeProviderImpl: setAcmeAuth() Setting reference for " + ref.getProperty("acmeAuthID"));
+			acmeAuthServiceRef.putReference((String) ref.getProperty("acmeAuthID"), ref);
+		}
+	}
 
-    protected void setAcmeAuthService(ServiceReference<AcmeAuthorizationServices> ref) {
-        synchronized (acmeAuthServiceRef) {
-			// Tr.info(tc, "AcmeProviderImpl: setAcmeAuth() Setting reference for " +
-			// ref.getProperty("acmeAuthID"));
-            acmeAuthServiceRef.putReference((String) ref.getProperty("acmeAuthID"), ref);
-        }
-    }
-
-    protected void unsetAcmeAuthService(ServiceReference<AcmeAuthorizationServices> ref) {
-        synchronized (acmeAuthServiceRef) {
-			// Tr.info(tc, "AcmeProviderImpl: unsetAcmeAuth() Unsetting reference for " +
-			// ref.getProperty("acmeAuthID"));
-            acmeAuthServiceRef.removeReference((String) ref.getProperty("acmeAuthID"), ref);
-        }
-    }
+	protected void unsetAcmeAuthService(ServiceReference<AcmeAuthorizationServices> ref) {
+		synchronized (acmeAuthServiceRef) {
+			Tr.info(tc, "AcmeProviderImpl: unsetAcmeAuth() Unsetting reference for " + ref.getProperty("acmeAuthID"));
+			acmeAuthServiceRef.removeReference((String) ref.getProperty("acmeAuthID"), ref);
+		}
+	}
 
 	@Override
 	public String getDirectoryURI() {
