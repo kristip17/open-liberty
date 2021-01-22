@@ -170,6 +170,13 @@
 		<AD id="timestampFormat" name="%timestampFormat" description="%timestampFormat.desc" required="false" type="String" />
 		<!-- End VMM ported Entries -->	
 
+        <AD id="bindAuthMechanism" name="internal" description="internal use only"
+			required="false" type="String" default="simple">
+			<Option label="%bindAuthMechanism.none" value="none" />
+			<Option label="%bindAuthMechanism.simple" value="simple" />
+			<Option label="%bindAuthMechanism.GSSAPI" value="GSSAPI" />
+		</AD>
+
     </OCD>
 
     <Designate factoryPid="com.ibm.ws.security.registry.ldap.config">
@@ -493,6 +500,16 @@
  <Designate factoryPid="com.ibm.ws.security.wim.adapter.ldap.dynamicMemberAttribute">
    <Object ocdref="com.ibm.ws.security.wim.adapter.ldap.dynamicMemberAttribute"/>
  </Designate>
+ 
+ <!--  Added GSSAPI/Kerberos Attributes, see also bindAutheMechanism -->
+ <Designate factoryPid="com.ibm.ws.security.wim.adapter.ldap.krb5authentication">
+   <Object ocdref="com.ibm.ws.security.wim.adapter.ldap.krb5authentication.metatype" />
+ </Designate>
+
+ <OCD id="com.ibm.ws.security.wim.adapter.ldap.krb5authentication.metatype" name="internal" description="%internal use only" ibm:alias="krb5authentication">
+   <AD id="krb5Principal"   name="internal" description="internal use only" type="String"  required="false" />
+   <AD id="krb5TicketCache"      name="internal" description="internal use only" type="String"  required="false" />
+ </OCD>
 
 <!-- Changed plural entityType to entityTypes for consumability -->
 <OCD id="com.ibm.ws.security.wim.adapter.ldap.entityType" name="%supportedLdapEntityType" description="%supportedLdapEntityType.desc">
