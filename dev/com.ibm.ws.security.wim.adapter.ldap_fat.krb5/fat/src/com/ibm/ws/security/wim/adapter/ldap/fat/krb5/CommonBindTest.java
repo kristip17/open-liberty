@@ -141,6 +141,9 @@ public class CommonBindTest {
     public static void tearDown() throws Exception {
         try {
             if (server != null) {
+                Log.info(c, "tearDown", "server.getHttpDefaultPort() " + server.getHttpDefaultPort());
+
+                server.javadumpThreads();
                 Log.info(c, "tearDown", "stop strings provided: " + Arrays.toString(stopStrings));
                 server.stopServer(stopStrings);
             }
