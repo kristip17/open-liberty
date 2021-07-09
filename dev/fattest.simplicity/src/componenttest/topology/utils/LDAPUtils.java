@@ -201,20 +201,39 @@ public class LDAPUtils {
         try {
             services = getLdapServices(2, CONSUL_LDAP_AD_SVT_SERVICE);
 
-            remoteServers[2] = new LdapServer();
-            remoteServers[2].serverName = services.get(0).getAddress();
-            remoteServers[2].ldapPort = services.get(0).getProperties().get(CONSUL_LDAP_PORT_KEY);
-            remoteServers[2].ldapsPort = services.get(0).getProperties().get(CONSUL_LDAPS_PORT_KEY);
-            remoteServers[2].bindDn = services.get(0).getProperties().get(CONSUL_BIND_DN_KEY);
-            remoteServers[2].bindPwd = services.get(0).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
+            /**
+             * ldap.2 is usually the primary, double check that the primary is up. In some paths, the call to the
+             * consul service hits a read timeout which does not cause a retry to the backup ldap. Or, even if we do
+             * use the backup, the timeouts (rather than a fast connection refused) can cause the bucket to timeout.
+             */
+            int primarySlotIndex = 0;
+            int secondarySlotIndex = 1;
+            try {
+                isLdapServerAvailable(services.get(primarySlotIndex).getAddress(), services.get(primarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY), false,
 
-            /* LDAP_SERVER_6 is dead, but was duplicate of LDAP_SERVER_2 */
+                                      services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY),
+                                      services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY));
+            } catch (Exception e) {
+                Log.info(c, "initializeRemoteLdapServers",
+                         "Double checked ldap at index " + primarySlotIndex + " which was down. Primary will be " + secondarySlotIndex + ": "
+                                                           + services.get(secondarySlotIndex).getAddress());
+                primarySlotIndex = 1;
+                secondarySlotIndex = 0;
+            }
+
+            remoteServers[2] = new LdapServer();
+            remoteServers[2].serverName = services.get(primarySlotIndex).getAddress();
+            remoteServers[2].ldapPort = services.get(primarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY);
+            remoteServers[2].ldapsPort = services.get(primarySlotIndex).getProperties().get(CONSUL_LDAPS_PORT_KEY);
+            remoteServers[2].bindDn = services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY);
+            remoteServers[2].bindPwd = services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
+
             remoteServers[6] = new LdapServer();
-            remoteServers[6].serverName = services.get(1).getAddress();
-            remoteServers[6].ldapPort = services.get(1).getProperties().get(CONSUL_LDAP_PORT_KEY);
-            remoteServers[6].ldapsPort = services.get(1).getProperties().get(CONSUL_LDAPS_PORT_KEY);
-            remoteServers[6].bindDn = services.get(1).getProperties().get(CONSUL_BIND_DN_KEY);
-            remoteServers[6].bindPwd = services.get(1).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
+            remoteServers[6].serverName = services.get(secondarySlotIndex).getAddress();
+            remoteServers[6].ldapPort = services.get(secondarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY);
+            remoteServers[6].ldapsPort = services.get(secondarySlotIndex).getProperties().get(CONSUL_LDAPS_PORT_KEY);
+            remoteServers[6].bindDn = services.get(secondarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY);
+            remoteServers[6].bindPwd = services.get(secondarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
         } finally {
             releaseServices(services);
         }
@@ -223,13 +242,26 @@ public class LDAPUtils {
         try {
             services = getLdapServices(2, CONSUL_LDAP_IBM_CONTINUOUS_SERVICE);
 
+            int primarySlotIndex = 0;
+            int secondarySlotIndex = 1;
+            try {
+                isLdapServerAvailable(services.get(primarySlotIndex).getAddress(), services.get(primarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY), false,
+                                      services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY),
+                                      services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY));
+            } catch (Exception e) {
+                Log.info(c, "initializeRemoteLdapServers",
+                         "Double checked ldap at index " + primarySlotIndex + " which was down. Primary will be " + secondarySlotIndex + ": "
+                                                           + services.get(secondarySlotIndex).getAddress());
+                primarySlotIndex = 1;
+                secondarySlotIndex = 0;
+            }
             remoteServers[1] = new LdapServer();
-            remoteServers[1].serverName = services.get(0).getAddress();
-            remoteServers[1].ldapPort = services.get(0).getProperties().get(CONSUL_LDAP_PORT_KEY);
+            remoteServers[1].serverName = services.get(primarySlotIndex).getAddress();
+            remoteServers[1].ldapPort = services.get(primarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY);
 
             remoteServers[5] = new LdapServer();
-            remoteServers[5].serverName = services.get(1).getAddress();
-            remoteServers[5].ldapPort = services.get(1).getProperties().get(CONSUL_LDAP_PORT_KEY);
+            remoteServers[5].serverName = services.get(secondarySlotIndex).getAddress();
+            remoteServers[5].ldapPort = services.get(secondarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY);
         } finally {
             releaseServices(services);
         }
@@ -238,26 +270,55 @@ public class LDAPUtils {
         try {
             services = getLdapServices(3, CONSUL_LDAP_IBM_SECURITY_FVT_SERVICE);
 
+            int primarySlotIndex = 0;
+            int secondarySlotIndex = 1;
+            int thirdSlotIndex = 2;
+            try {
+                isLdapServerAvailable(services.get(primarySlotIndex).getAddress(), services.get(primarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY), false,
+                                      services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY),
+                                      services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY));
+            } catch (Exception e) {
+                try {
+                    isLdapServerAvailable(services.get(secondarySlotIndex).getAddress(), services.get(secondarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY), false,
+                                          services.get(secondarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY),
+                                          services.get(secondarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY));
+                    Log.info(c, "initializeRemoteLdapServers",
+                             "Double checked ldap at index " + primarySlotIndex + " which was down. Primary will be " + secondarySlotIndex + ": "
+                                                               + services.get(secondarySlotIndex).getAddress());
+                    primarySlotIndex = 1;
+                    secondarySlotIndex = 2;
+                    thirdSlotIndex = 0;
+                } catch (Exception e2) {
+                    Log.info(c, "initializeRemoteLdapServers",
+                             "Double checked ldap at index " + primarySlotIndex + " and " + secondarySlotIndex + " which were both down. Primary will be " + thirdSlotIndex + ": "
+                                                               + services.get(thirdSlotIndex).getAddress());
+                    primarySlotIndex = 2;
+                    secondarySlotIndex = 0;
+                    thirdSlotIndex = 1;
+                }
+
+            }
+
             remoteServers[4] = new LdapServer();
-            remoteServers[4].serverName = services.get(0).getAddress();
-            remoteServers[4].ldapPort = services.get(0).getProperties().get(CONSUL_LDAP_PORT_KEY);
-            remoteServers[4].ldapsPort = services.get(0).getProperties().get(CONSUL_LDAPS_PORT_KEY);
-            remoteServers[4].bindDn = services.get(0).getProperties().get(CONSUL_BIND_DN_KEY);
-            remoteServers[4].bindPwd = services.get(0).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
+            remoteServers[4].serverName = services.get(primarySlotIndex).getAddress();
+            remoteServers[4].ldapPort = services.get(primarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY);
+            remoteServers[4].ldapsPort = services.get(primarySlotIndex).getProperties().get(CONSUL_LDAPS_PORT_KEY);
+            remoteServers[4].bindDn = services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY);
+            remoteServers[4].bindPwd = services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
 
             remoteServers[7] = new LdapServer();
-            remoteServers[7].serverName = services.get(1).getAddress();
-            remoteServers[7].ldapPort = services.get(1).getProperties().get(CONSUL_LDAP_PORT_KEY);
-            remoteServers[7].ldapsPort = services.get(1).getProperties().get(CONSUL_LDAPS_PORT_KEY);
-            remoteServers[7].bindDn = services.get(1).getProperties().get(CONSUL_BIND_DN_KEY);
-            remoteServers[7].bindPwd = services.get(1).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
+            remoteServers[7].serverName = services.get(secondarySlotIndex).getAddress();
+            remoteServers[7].ldapPort = services.get(secondarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY);
+            remoteServers[7].ldapsPort = services.get(secondarySlotIndex).getProperties().get(CONSUL_LDAPS_PORT_KEY);
+            remoteServers[7].bindDn = services.get(secondarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY);
+            remoteServers[7].bindPwd = services.get(secondarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
 
             remoteServers[8] = new LdapServer();
-            remoteServers[8].serverName = services.get(2).getAddress();
-            remoteServers[8].ldapPort = services.get(2).getProperties().get(CONSUL_LDAP_PORT_KEY);
-            remoteServers[8].ldapsPort = services.get(2).getProperties().get(CONSUL_LDAPS_PORT_KEY);
-            remoteServers[8].bindDn = services.get(2).getProperties().get(CONSUL_BIND_DN_KEY);
-            remoteServers[8].bindPwd = services.get(2).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
+            remoteServers[8].serverName = services.get(thirdSlotIndex).getAddress();
+            remoteServers[8].ldapPort = services.get(thirdSlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY);
+            remoteServers[8].ldapsPort = services.get(thirdSlotIndex).getProperties().get(CONSUL_LDAPS_PORT_KEY);
+            remoteServers[8].bindDn = services.get(thirdSlotIndex).getProperties().get(CONSUL_BIND_DN_KEY);
+            remoteServers[8].bindPwd = services.get(thirdSlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
         } finally {
             releaseServices(services);
         }
@@ -266,17 +327,31 @@ public class LDAPUtils {
         try {
             services = getLdapServices(2, CONSUL_LDAP_IBM_SECURITY_SERVICE);
 
+            int primarySlotIndex = 0;
+            int secondarySlotIndex = 1;
+            try {
+                isLdapServerAvailable(services.get(primarySlotIndex).getAddress(), services.get(primarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY), false,
+                                      services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY),
+                                      services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY));
+            } catch (Exception e) {
+                Log.info(c, "initializeRemoteLdapServers",
+                         "Double checked ldap at index " + primarySlotIndex + " which was down. Primary will be " + secondarySlotIndex + ": "
+                                                           + services.get(secondarySlotIndex).getAddress());
+                primarySlotIndex = 1;
+                secondarySlotIndex = 0;
+            }
+
             remoteServers[10] = new LdapServer();
-            remoteServers[10].serverName = services.get(0).getAddress();
-            remoteServers[10].ldapPort = services.get(0).getProperties().get(CONSUL_LDAP_PORT_KEY);
-            remoteServers[10].bindDn = services.get(0).getProperties().get(CONSUL_BIND_DN_KEY);
-            remoteServers[10].bindPwd = services.get(0).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
+            remoteServers[10].serverName = services.get(primarySlotIndex).getAddress();
+            remoteServers[10].ldapPort = services.get(primarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY);
+            remoteServers[10].bindDn = services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY);
+            remoteServers[10].bindPwd = services.get(primarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
 
             remoteServers[12] = new LdapServer();
-            remoteServers[12].serverName = services.get(1).getAddress();
-            remoteServers[12].ldapPort = services.get(1).getProperties().get(CONSUL_LDAP_PORT_KEY);
-            remoteServers[12].bindDn = services.get(1).getProperties().get(CONSUL_BIND_DN_KEY);
-            remoteServers[12].bindPwd = services.get(1).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
+            remoteServers[12].serverName = services.get(secondarySlotIndex).getAddress();
+            remoteServers[12].ldapPort = services.get(secondarySlotIndex).getProperties().get(CONSUL_LDAP_PORT_KEY);
+            remoteServers[12].bindDn = services.get(secondarySlotIndex).getProperties().get(CONSUL_BIND_DN_KEY);
+            remoteServers[12].bindPwd = services.get(secondarySlotIndex).getProperties().get(CONSUL_BIND_PASSWORD_KEY);
         } finally {
             releaseServices(services);
         }
